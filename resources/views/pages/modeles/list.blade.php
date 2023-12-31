@@ -123,6 +123,7 @@
                            {{--  <a class="me-3" href="{{route('marques.detail', ['marque' => $marque->id_marque])}}">
                                 <img src="{{asset('assets/img/icons/eye.svg')}}" alt="img">
                             </a> --}}
+                            
                             <a class="me-3" href="{{route('modeles.edit', ['modele' => $modele->id_modele])}}">
                                 <img src="{{asset('assets/img/icons/edit.svg')}}" alt="img">
                             </a>

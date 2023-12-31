@@ -56,24 +56,24 @@ Route::get('/modeles', [ModeleController::class, 'list'])->name('modeles.list');
 Route::get('/formulaire', [ModeleController::class, 'formulaire'])->name('modeles.formulaire');
 Route::post('/modeles', [ModeleController::class, 'store'])->name('modeles.store');
 Route::get('/detail', [ModeleController::class, 'detail'])->name('modeles.detail');
-Route::get('/edit{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
-Route::put('/update{modele}', [ModeleController::class, 'update'])->name('modeles.update');
+Route::get('/edit/{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
+Route::put('/update/{modele}', [ModeleController::class, 'update'])->name('modeles.update');
 Route::delete('/modeles/{modele}', [ModeleController::class, 'destroy'])->name('modeles.destroy');
 // SERVICES 
 Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
 Route::get('/formulaire', [ServiceController::class, 'formulaire'])->name('services.formulaire');
 Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
 Route::get('/detail', [ServiceController::class, 'detail'])->name('services.detail');
-Route::get('/edit{service}', [ServiceController::class, 'edit'])->name('services.edit');
-Route::put('/update{service}', [ServiceController::class, 'update'])->name('services.update');
+Route::get('/edit', [ServiceController::class, 'edit'])->name('services.edit');
+Route::put('/update', [ServiceController::class, 'update'])->name('services.update');
 Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
 // PRESTATAIRES
 Route::get('/prestataires', [PrestataireController::class, 'list'])->name('prestataires.list');
 Route::get('/formulaire', [PrestataireController::class, 'formulaire'])->name('prestataires.formulaire');
 Route::post('/prestataires', [PrestataireController::class, 'store'])->name('prestataires.store');
 Route::get('/detail', [PrestataireController::class, 'detail'])->name('prestataires.detail');
-Route::get('/edit{prestataire}', [PrestataireController::class, 'edit'])->name('prestataires.edit');
-Route::put('/update{prestataire}', [PrestataireController::class, 'update'])->name('prestataires.update');
+Route::get('/prestataires/edit/{prestataire}', [PrestataireController::class, 'edit'])->name('prestataires.edit');
+Route::put('/prestataires/update/{prestataire}', [PrestataireController::class, 'update'])->name('prestataires.update');
 Route::delete('/prestataires/{prestataire}', [PrestataireController::class, 'destroy'])->name('prestataires.destroy');
 //VEHICULES
 Route::get('/vehicules', [VehiculeController::class, 'list'])->name('vehicules.list');

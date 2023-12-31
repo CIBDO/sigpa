@@ -30,14 +30,14 @@ class ModeleController extends Controller
             ->with('success', 'Modèle ajoutée avec succès');
     }
 
-    public function show(Modele $modele)
+    public function detail(Modele $modele)
     {
-        return view('pages.modeles.detail', compact('modeles'));
+        return view('pages.modeles.detail', compact('modele'));
     }
 
     public function edit(Modele $modele)
     {
-        return view('pages.modeles.edit', compact('modeles'));
+        return view('pages.modeles.edit', compact('modele'));
     }
 
     public function update(Request $request, Modele $modele)

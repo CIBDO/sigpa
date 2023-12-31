@@ -8,7 +8,6 @@
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
     <title>SIGPA</title>
-      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- Ajoutez ces lignes pour inclure Bootstrap (si ce n'est pas déjà inclus) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -52,6 +51,7 @@
             });
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
 

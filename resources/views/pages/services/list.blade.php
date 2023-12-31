@@ -1,7 +1,6 @@
  @extends('layouts.master')
  @section('content')
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
- <div class="page-wrapper"> 
+    <div class="page-wrapper"> 
      <div class="content">
          <div class="page-header">
              <div class="page-title">
@@ -51,9 +50,9 @@
              {{-- <a href="{{ route('marques.formulaire') }}" class="btn btn-added">
              <img src="assets/img/icons/plus.svg" alt="img" class="me-1">Ajouter marque
              </a> --}}
-
-         </div>
-         <div class="card">
+             
+        </div> 
+            <div class="card">
     <div class="card-body">
         <div class="table-top">
             <!-- Ajoutez des éléments de filtrage ou d'autres fonctionnalités si nécessaire -->
@@ -88,10 +87,7 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
-
         <div class="table-responsive">
             <table class="table datanew">
                 <thead>
@@ -102,7 +98,8 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
-                        <th>Service</th>
+                        <th>Numéro</th>
+                        <th>Nom Service</th>
                         <th>Description</th>
                         <!-- Ajoutez d'autres colonnes au besoin -->
                         <th class="text-rigth">Action</th>
@@ -117,7 +114,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
-                        <td>{{$service->id_marque}}</td>
+                        <td>{{$service->id_service}}</td>
                         <td>{{$service->nom_service}}</td>
                         <td>{{$service->description}}</td>
                         <!-- Ajoutez d'autres cellules de données au besoin -->
@@ -130,11 +127,11 @@
                                 <img src="{{asset('assets/img/icons/edit.svg')}}" alt="img">
                             </a>
                             <a href="{{ route('services.destroy', ['service' => $service->id_service]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer ce service?'))
-                                       document.getElementById('delete-service-form-{{$service->id_service}}').submit();">
+                                       document.getElementById('delete-marque-form-{{$service->id_service}}').submit();">
                                 <img src="{{asset('assets/img/icons/delete.svg')}}" alt="img">
                             </a>
                             <!-- Formulaire pour la suppression (à cacher par défaut) -->
-                            <form id="delete-service-form-{{$service->id_service}}" action="{{ route('services.destroy', ['service' => $service->id_service]) }}" method="POST" style="display: none;">
+                            <form id="delete-marque-form-{{$service->id_service}}" action="{{ route('services.destroy', ['service' => $service->id_service]) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>
@@ -143,11 +140,11 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+         </div>
     </div>
 </div>
 
      </div>
  </div> 
- @endsection
-
+         
+@endsection
