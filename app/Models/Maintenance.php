@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Maintenance extends Model
 {
+    protected $primaryKey = 'id_maintenance';
     protected $fillable = [
         'id_vehicule',
         'id_prestataire',
@@ -15,7 +16,7 @@ class Maintenance extends Model
         'cout',
         'date_debut',
         'date_fin',
-        'type_maintenance',
+        'id_type_maintenance',
         'travaux',
         'statut',
     ];

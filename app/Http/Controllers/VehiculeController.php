@@ -79,7 +79,20 @@ public function store(Request $request)
             'date_acquisition' => 'required|date',
         ]);
 
-        $vehicule->update($request->all());
+         // Utiliser la méthode fill pour définir explicitement le champ à mettre à jour
+         $vehicule->fill(['immatriculation' => $request->input('immatriculation')]);
+         $vehicule->fill(['date_immatriculation' => $request->input('date_immatriculation')]);
+         $vehicule->fill(['etat_vehicule' => $request->input('etat_vehicule')]);
+         $vehicule->fill(['numero_chasis' => $request->input('numero_chasis')]);
+         $vehicule->fill(['date_circulation' => $request->input('date_circulation')]);
+         $vehicule->fill(['utilite' => $request->input('utilite')]);
+         $vehicule->fill(['statut' => $request->input('statut')]);
+         $vehicule->fill(['id_modele' => $request->input('id_modele')]);
+         $vehicule->fill(['energie' => $request->input('energie')]);
+         $vehicule->fill(['date_acquisition' => $request->input('date_acquisition')]);
+
+         $vehicule->save();
+
 
         return redirect()->route('vehicules.list')
             ->with('success', 'Véhicule modifié avec succès');

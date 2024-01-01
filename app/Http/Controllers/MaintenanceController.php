@@ -1,64 +1,88 @@
 <?php
 
+ 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Maintenance;
+use App\Models\Vehicule;
+use App\Models\Prestataire;
+use App\Models\Type_maintenance;
 class MaintenanceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function list()
     {
-        //
+        $maintenances = Maintenance::all();
+        return view('pages.maintenances.list', compact('maintenances'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function formulaire()
     {
-        //
+        $vehicules = Vehicule::all();
+        $prestataires = Prestataire::all();
+        $typesMaintenance = Type_maintenance::all();
+        // Vous pouvez ajouter du code supplémentaire si nécessaire
+        return view('pages.maintenances.formulaire', compact('vehicules','prestataires','typesMaintenance'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
-        //
+    
+        $request->validate([
+            'id_vehicule' => 'required',
+            'id_prestataire' => 'required',
+            'numero_facture' => 'required',
+            'cout' => 'required',
+            'date_debut' => 'required',
+            'date_fin' => 'required',
+            'id_type_maintenance' => 'required',
+            'travaux' => 'required',
+            'statut' => 'required',
+        ]);
+
+        Maintenance::create($request->all());
+
+        return redirect()->route('maintenances.formulaire')
+                         ->with('success', 'Maintenance ajoutée avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Maintenance $maintenance)
     {
-        //
+        return view('maintenances.show', compact('maintenance'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Maintenance $maintenance)
     {
-        //
+        $vehicules = Vehicule::all();
+        $prestataires = Prestataire::all();
+        return view('pages.maintenances.edit', compact('maintenance','vehicules','prestataires'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Maintenance $maintenance)
     {
-        //
+        $request->validate([
+            'id_vehicule' => 'required',
+            'id_prestataire' => 'required',
+            'numero_facture' => 'required',
+            'cout' => 'required',
+            'date_debut' => 'required',
+            'date_fin' => 'required',
+            'id_type_maintenance' => 'required',
+            'travaux' => 'required',
+            'statut' => 'required',
+        ]);
+
+        $maintenance->update($request->all());
+
+        return redirect()->route('maintenances.list')
+                         ->with('success', 'Maintenance mise à jour avec succès');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Maintenance $maintenance)
     {
-        //
+        $maintenance->delete();
+
+        return redirect()->route('maintenances.list')
+                         ->with('success', 'Maintenance supprimée avec succès');
     }
 }

@@ -47,7 +47,7 @@
                      <div class="dash-counts">
                          <h4>En Mission</h4>
                          <ul>
-                             <li li class="h4 font-weight-bold text-center text-white">Total:{{ $totalMissions }} </li>
+                             <li li class="h4 font-weight-bold text-center text-white">Total: {{ $totalMissions }} </li>
                          </ul>
                      </div>
                      <div class="dash-imgs">
@@ -60,7 +60,7 @@
                      <div class="dash-counts">
                          <h4>En Maintenance</h4>
                          <ul>
-                             <li li class="h4 font-weight-bold text-center text-white">Total:{{$totalMaintenances}} </li>
+                             <li li class="h4 font-weight-bold text-center text-white">Total: {{$totalMaintenances}} </li>
                          </ul>
                      </div>
                      <div class="dash-imgs">
@@ -73,7 +73,7 @@
                      <div class="dash-counts">
                          <h4>les Incidents</h4>
                          <ul>
-                             <li li class="h4 font-weight-bold text-center text-white">Total:{{$totalIncidents}} </li>
+                             <li li class="h4 font-weight-bold text-center text-white">Total: {{$totalIncidents}} </li>
                          </ul>
                      </div>
                      <div class="dash-imgs">

@@ -131,11 +131,11 @@
                             </label>
                         </th>
                         <th>Numéro de Mission</th>
-                        <th>Objectif</th>
+                        {{-- <th>Objectif</th> --}}
                         <th>Date de Début</th>
                         <th>Date de Fin</th>
-                        <th>Trajet</th>
-                        <th>Véhicule</th>
+                        {{-- <th>Trajet</th>
+                        <th>Véhicule</th> --}}
                         <!-- Ajoutez d'autres colonnes au besoin -->
                         <th class="text-rigth">Action</th>
                     </tr>
@@ -150,11 +150,11 @@
                             </label>
                         </td>
                         <td>{{ $mission->numero_mission }}</td>
-                        <td>{{ $mission->objectif }}</td>
+                        {{-- <td>{{ $mission->objectif }}</td> --}}
                         <td>{{ $mission->date_debut }}</td>
                         <td>{{ $mission->date_fin }}</td>
-                        <td>{{ $mission->trajet }}</td>
-                        <td>{{ $mission->vehicule->immatriculation }}</td>
+                       {{--  <td>{{ $mission->trajet }}</td>
+                        <td>{{ $mission->vehicule->immatriculation }}</td> --}}
                         <!-- Ajoutez d'autres cellules de données au besoin -->
                         <td>
                             <!-- Ajoutez des liens d'action pour chaque mission -->

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mission extends Model
 {
+    protected $primaryKey = 'id_mission';
     protected $fillable = [
         'numero_mission',
         'objectif',

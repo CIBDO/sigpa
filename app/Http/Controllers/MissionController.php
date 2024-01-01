@@ -79,7 +79,7 @@ class MissionController extends Controller
         $mission = Mission::findOrFail($id);
         $mission->update($validatedData);
 
-        return redirect()->route('pages.missions.list')->with('success', 'Mission mise à jour avec succès.');
+        return redirect()->route('missions.list')->with('success', 'Mission mise à jour avec succès.');
     }
 
     // Supprime une mission de la base de données

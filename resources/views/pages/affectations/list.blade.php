@@ -65,8 +65,14 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="statut" class="form-label">Statut:</label>
-                                        <input type="text" class="form-control" name="statut" required>
+                                        <label>Statut</label>
+                                <select name="statut" class="form-control controle select2">
+                                    <option selected disabled>Sélectionner le statut</option>
+                                    <option value="Neuf">Neuf</option>
+                                    <option value="Bon">Bon</option>
+                                    <option value="pasbon">Pas Bon</option>
+                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                                </select>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Ajouter</button>

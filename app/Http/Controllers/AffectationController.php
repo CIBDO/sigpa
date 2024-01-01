@@ -23,7 +23,7 @@ class AffectationController extends Controller
     $marques = Marque::all(); // Remplacez cela par votre logique pour récupérer les missions
     $vehicules = Vehicule::all(); // Remplacez cela par votre logique pour récupérer les véhicules
     
-    return view('pages.affectations.list', compact('affectations', 'services', 'vehicules'=>, 'modeles', 'marques'));
+    return view('pages.affectations.list', compact('affectations', 'services', 'vehicules', 'modeles', 'marques'));
         }
     
         public function detail($id_affectation)

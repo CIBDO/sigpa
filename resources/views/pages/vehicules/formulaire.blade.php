@@ -32,7 +32,13 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>État du Véhicule</label>
-                                <input type="text" name="etat_vehicule" class="form-control" required>
+                                <select name="etat_vehicule" class="form-control controle select2">
+                                    <option selected disabled>Sélectionner l'état du véhicule</option>
+                                    <option value="Bon">Neuf</option>
+                                    <option value="Bon">Bon</option>
+                                    <option value="Moyen">Moyen</option>
+                                    <option value="Mauvais">Mauvais</option>
+                                </select>
                             </div>
                         </div>
 
@@ -53,14 +59,22 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Utilité</label>
-                                <input type="text" name="utilite" class="form-control" required>
+                                <select name="utilite" class="form-control controle select2">
+                                    <option selected disabled>Sélectionner l'utilité</option>
+                                    <option value="Service">Service</option>
+                                    <option value="Mission">Mission</option>
+                                </select>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Statut</label>
-                                <input type="text" name="statut" class="form-control" required>
+                                <select name="statut" class="form-control controle select2">
+                                    <option selected disabled>Sélectionner le statut</option>
+                                    <option value="Actif">Actif</option>
+                                    <option value="Inactif">Inactif</option>
+                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                                </select>
                             </div>
                         </div>
 
@@ -74,11 +88,11 @@
                                 </select>
                             </div>
                         </div>
-
+ 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Marque</label>
-                                <select name="id_marque" class="form-control ">
+                                <select name="id_marque" class="form-control select2 ">
                                     @foreach($marques as $marque)
                                         <option value="{{ $marque->id_marque }}">{{ $marque->nom_marque }}</option>
                                     @endforeach
@@ -89,7 +103,12 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Énergie</label>
-                                <input type="text" name="energie" class="form-control" required>
+                                <select name="energie" class="form-control controle select2">
+                                    <option selected disabled>Sélectionner le type d'énergie</option>
+                                    <option value="Essence">Essence</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                                </select>
                             </div>
                         </div>
                            <div class="col-lg-3 col-sm-6 col-12">

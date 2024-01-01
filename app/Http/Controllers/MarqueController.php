@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marque;
+use HepplerDotNet\FlashToastr\Flash;
 use Brick\Math\BigInteger;
 
 class MarqueController extends Controller
@@ -27,8 +28,9 @@ class MarqueController extends Controller
 
         Marque::create($request->all());
 
-        return redirect()->route('marques.list')
-            ->with('success', 'Marque ajoutée avec succès');
+        return redirect()->route('marques.list')->with('success', 'Marque ajoutée avec succès');
+           
+
     }
 
     public function show(Marque $marque)
