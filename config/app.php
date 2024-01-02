@@ -156,7 +156,7 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
-       
+        HepplerDotNet\FlashToastr\FlashServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
        
@@ -181,6 +181,7 @@ return [
         'aliases' => [
             // ...
             'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+            'Flash' => HepplerDotNet\FlashToastr\Flash::class,
         ],
         
     ])->toArray(),

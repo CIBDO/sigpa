@@ -4,6 +4,11 @@
 <div class="page-wrapper">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="content">
+    @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
         <div class="page-header">
             <div class="page-title">
                 <h4>Ajouter un Chauffeur</h4>
@@ -38,19 +43,20 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Date de Naissance</label>
-                                <input type="date" name="date_naiss" required>
+                                <input type="date" name="date_naiss" class="form-control" required>
                             </div>
                         </div> 
-                        <div class="col-lg-3 col-sm-6 col-12">
+                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Genre</label>
-                                <input type="text" name="genre" required>
-                                {{-- <select class="select" name="genre" required>
-                                    <option value="male">M</option>
-                                    <option value="female">F</option>
-                                </select> --}}
+                                <label>Sexe</label>
+                                <select name="genre" class="form-control controle select2">
+                                    <option selected disabled>Sélectionner le Sexe</option>
+                                    <option value="Masculin">M</option>
+                                    <option value="Feminin">F</option>
+                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                                </select>
                             </div>
-                        </div> 
+                        </div>
                        <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Email</label>
@@ -72,19 +78,27 @@
                          <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Catégorie de Permis</label>
-                                <input type="text" name="categorie_permis" required>
+                                <select name="categorie_permis" class="form-control controle select2">
+                                <option selected disabled>Sélectionner la Catégorie</option>
+                                <option value="A">A1</option>
+                                 <option value="AA">A2</option>
+                                 <option value="B">B</option>
+                                 <option value="C">C</option>
+                                 <option value="E">E</option>
+                                 <option value="F">F</option>
+                                 </select>
                             </div>
                         </div> 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Validité du Permis</label>
-                                <input type="date" name="validite_permis" required>
+                                <input type="date" name="validite_permis" class="form-control" required>
                             </div>
                         </div> 
                        
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Choose Service</label>
+                                <label>Choisir Service</label>
                                 <select name="id_service" class="form-control controle select2" >
                                     @foreach($services as $service)
                                     <option value="{{ $service->id_service }}">{{ $service->nom_service }}</option>

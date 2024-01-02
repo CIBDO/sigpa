@@ -1,7 +1,13 @@
 @extends('layouts.master')
 @section('content')
 <div class="page-wrapper">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="content">
+    @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
         <div class="page-header">
             <div class="page-title">
                 <h4>Ajouter une maintenance</h4>
@@ -87,15 +93,12 @@
                         <div class="form-group">
                             <label for="travaux">Travaux:</label>
                             <textarea name="travaux" required></textarea>
-                        </div>
-                    </div>
-
-                    
-                                <button type="submit" class="btn btn-primary">Enregistrer</button>
-  
+                        </div>                   
+                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+ </div>
 @endsection

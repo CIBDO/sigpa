@@ -27,7 +27,7 @@ class MarqueController extends Controller
         ]);
 
         Marque::create($request->all());
-
+        Flash::info('success', 'Marque ajoutée avec succès');
         return redirect()->route('marques.list')->with('success', 'Marque ajoutée avec succès');
            
 
