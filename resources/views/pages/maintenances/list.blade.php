@@ -79,23 +79,23 @@
                             <td>{{ $maintenance->cout }}</td> --}}
                             <td>{{ $maintenance->date_debut }}</td>
                             <td>{{ $maintenance->date_fin }}</td>
-                            <td>{{ $maintenance->typeMaintenance->type_maintenance }}</td>
+                            <td>{{ optional($maintenance->typeMaintenance)->type_maintenance }}</td>
                             <td>{{ $maintenance->travaux }}</td>
                             <td>{{ $maintenance->statut }}</td>
                             <td>
-            <a href="{{ route('maintenances.edit', ['maintenance' => $maintenance->id]) }}" class="btn btn-sm btn-warning">Éditer</a>
+            <a href="{{ route('maintenances.edit', ['maintenance' => $maintenance->id_maintenance]) }}" class="btn btn-sm btn-warning">Éditer</a>
             
             <!-- Bouton de suppression -->
-            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $maintenance->id }}">
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $maintenance->id_maintanance }}">
                 Supprimer
             </button>
 
             <!-- Modal de confirmation de suppression -->
-            <div class="modal fade" id="deleteModal{{ $maintenance->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $maintenance->id }}" aria-hidden="true">
+            <div class="modal fade" id="deleteModal{{ $maintenance->id_maintenance }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $maintenance->id_maintenance }}" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel{{ $maintenance->id }}">Confirmer la suppression</h5>
+                            <h5 class="modal-title" id="deleteModalLabel{{ $maintenance->id_maintenance }}">Confirmer la suppression</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                            <form method="post" action="{{ route('maintenances.destroy', ['maintenance' => $maintenance->id]) }}">
+                            <form method="post" action="{{ route('maintenances.destroy', ['maintenance' => $maintenance->id_maintenance]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Confirmer la suppression</button>

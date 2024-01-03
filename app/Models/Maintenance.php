@@ -30,6 +30,9 @@ class Maintenance extends Model
     {
         return $this->belongsTo(Prestataire::class, 'id_prestataire');
     }
-
+    public function type_maintenance()
+    {
+        return $this->belongsTo(type_maintenance::class, 'id_type_maintenance');
+    }
     // Ajoutez d'autres relations et méthodes au besoin
 }

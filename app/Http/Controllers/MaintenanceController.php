@@ -31,11 +31,11 @@ class MaintenanceController extends Controller
         $request->validate([
             'id_vehicule' => 'required',
             'id_prestataire' => 'required',
+            'id_type_maintenance' => 'required',
             'numero_facture' => 'required',
             'cout' => 'required',
             'date_debut' => 'required',
-            'date_fin' => 'required',
-            'id_type_maintenance' => 'required',
+            'date_fin' => 'required',           
             'travaux' => 'required',
             'statut' => 'required',
         ]);
