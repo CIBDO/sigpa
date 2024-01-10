@@ -16,15 +16,15 @@
                                     @csrf
                                     @method('PUT')
                                     <label for="type_maintenance">type:</label>
-                                        <input type="text" name="type_maintenance" value="{{ $typeMaintenance->type_maintenance }}" required>
+                                        <input type="text" name="type" value="{{ $categorie->type}}" required>
                                     <label for="description">Description:</label>
-                                        <input type="text" name="description" value="{{ $typeMaintenance->description }}" required>
+                                        <input type="text" name="description" value="{{ $categorie->description }}" required>
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <a href="javascript:void(0);" class="btn btn-submit me-2 updateBtn">Mise à jour</a>
-                            <a href="{{ route('type_maintenances.list') }}" class="btn btn-cancel">Cancel</a>
+                            <a href="{{ route('categories.list') }}" class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
                 </div>

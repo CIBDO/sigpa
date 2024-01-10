@@ -12,11 +12,11 @@ class Maintenance extends Model
     protected $fillable = [
         'id_vehicule',
         'id_prestataire',
+        'type',
         'numero_facture',
         'cout',
         'date_debut',
         'date_fin',
-        'id_type_maintenance',
         'travaux',
         'statut',
     ];
@@ -30,9 +30,9 @@ class Maintenance extends Model
     {
         return $this->belongsTo(Prestataire::class, 'id_prestataire');
     }
-    public function type_maintenance()
+    /* public function type_maintenance()
     {
-        return $this->belongsTo(type_maintenance::class, 'id_type_maintenance');
-    }
+        return $this->belongsTo(Categorie::class, 'id_categorie');
+    } */
     // Ajoutez d'autres relations et méthodes au besoin
 }

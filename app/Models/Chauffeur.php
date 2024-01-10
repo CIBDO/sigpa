@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chauffeur extends Model
 {
+    protected $primaryKey = 'id_chauffeur';
+
     protected $fillable = [
         'matricule',
         'nom',

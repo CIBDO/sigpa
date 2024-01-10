@@ -11,8 +11,9 @@ use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChauffeurController;
 use App\Http\Controllers\MissionController;
-use App\Http\Controllers\Type_maintenanceController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\AssuranceController;
 
 use App\Models\Affectation;
 use App\Models\Chauffeur;
@@ -100,8 +101,8 @@ Route::get('/chauffeurs', [ChauffeurController::class, 'list'])->name('chauffeur
 Route::get('chauffeurs/formulaire', [ChauffeurController::class, 'formulaire'])->name('chauffeurs.formulaire');
 Route::post('/chauffeurs', [ChauffeurController::class, 'store'])->name('chauffeurs.store');
 Route::get('chauffeurs/detail', [ChauffeurController::class, 'detail'])->name('chauffeurs.detail');
-Route::get('/edit{chauffeur}', [ChauffeurController::class, 'edit'])->name('chauffeurs.edit');
-Route::put('/update{chauffeur}', [ChauffeurController::class, 'update'])->name('chauffeurs.update');
+Route::get('chauffeurs/edit/{chauffeur}', [ChauffeurController::class, 'edit'])->name('chauffeurs.edit');
+Route::put('chauffeurs/update/{chauffeur}', [ChauffeurController::class, 'update'])->name('chauffeurs.update');
 Route::delete('/chauffeurs/{chauffeur}', [ChauffeurController::class, 'destroy'])->name('chauffeurs.destroy');
 //MISSIONS
 Route::get('/missions', [MissionController::class, 'list'])->name('missions.list');
@@ -111,19 +112,28 @@ Route::get('missions/detail', [MissionController::class, 'detail'])->name('missi
 Route::get('missions/edit/{mission}', [MissionController::class, 'edit'])->name('missions.edit');
 Route::put('missions/update{mission}', [MissionController::class, 'update'])->name('missions.update');
 Route::delete('/missions/{mission}', [MissionController::class, 'destroy'])->name('missions.destroy');
-//TYPE MAINTENANCE
-Route::get('/type_maintenances', [Type_maintenanceController::class, 'list'])->name('type_maintenances.list');
-Route::post('/type_maintenances', [Type_maintenanceController::class, 'store'])->name('type_maintenances.store');
-Route::get('type_maintenances/edit/{type_maintenance}', [Type_maintenanceController::class, 'edit'])->name('type_maintenances.edit');
-Route::put('type_maintenances/update/{id_type_maintenance}', [Type_maintenanceController::class, 'update'])->name('type_maintenances.update');
-Route::delete('/type_maintenances/{type_maintenance}', [Type_maintenanceController::class, 'destroy'])->name('type_maintenances.destroy');
 //MAINTENANCES
 Route::get('/maintenances', [MaintenanceController::class, 'list'])->name('maintenances.list');
 Route::get('maintenances/formulaire', [MaintenanceController::class, 'formulaire'])->name('maintenances.formulaire');
 Route::post('/maintenances', [MaintenanceController::class, 'store'])->name('maintenances.store');
 Route::get('maintenances/detail', [MaintenanceController::class, 'detail'])->name('maintenances.detail');
 Route::get('maintenances/edit/{maintenance}', [MaintenanceController::class, 'edit'])->name('maintenances.edit');
-Route::put('maintenances/update{maintenance}', [MaintenanceController::class, 'update'])->name('maintenances.update');
+Route::put('maintenances/update/{maintenance}', [MaintenanceController::class, 'update'])->name('maintenances.update');
 Route::delete('/maintenances{maintenance}', [MaintenanceController::class, 'destroy'])->name('maintenances.destroy');
 
-
+//CATEGORIE
+Route::get('/categories', [CategorieController::class, 'list'])->name('categories.list');
+Route::get('categories/formulaire', [CategorieController::class, 'formulaire'])->name('categories.formulaire');
+Route::post('/categories', [CategorieController::class, 'store'])->name('categories.store');
+Route::get('categories/detail', [CategorieController::class, 'detail'])->name('categories.detail');
+Route::get('categories/edit/{categorie}', [CategorieController::class, 'edit'])->name('categories.edit');
+Route::put('categories/update/{categorie}', [CategorieController::class, 'update'])->name('categories.update');
+Route::delete('/categories{categorie}', [CategorieController::class, 'destroy'])->name('categories.destroy');
+//Assurances 
+Route::get('/assurances', [AssuranceController::class, 'list'])->name('assurances.list');
+Route::get('assurances/formulaire', [AssuranceController::class, 'formulaire'])->name('assurances.formulaire');
+Route::post('/assurances', [AssuranceController::class, 'store'])->name('assurances.store');
+Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('assurances.detail');
+Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
+Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
+Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');

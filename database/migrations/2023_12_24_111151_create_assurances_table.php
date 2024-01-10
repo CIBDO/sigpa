@@ -13,12 +13,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('assurances', function (Blueprint $table) {
-            $table->id('id_mission');
+            $table->id('id_assurance');
             $table->string('nom_assurance')->nullable();
             $table->string('type_assurance');
             $table->unsignedBigInteger('id_vehicule');
             $table->date('date_debut');
             $table->date('date_fin');
+            $table->string('statut');
+            $table->integer('jours_restant');
             $table->foreign('id_vehicule')->references('id_vehicule')->on('vehicules');
             $table->timestamps();
         });

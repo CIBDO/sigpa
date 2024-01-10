@@ -1,4 +1,4 @@
-<!-- resources/views/maintenances/edit.blade.php -->
+
 @extends('layouts.master')
 
 @section('content')
@@ -11,7 +11,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form method="post" action="{{ route('maintenances.update', ['maintenance' => $maintenance->id]) }}">
+                <form method="post" action="{{ route('maintenances.update', ['maintenance' => $maintenance->id_maintenance]) }}">
                     @csrf
                     @method('PUT')
 
@@ -26,7 +26,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Prestataire</label>
@@ -44,7 +43,6 @@
                                 <input type="text" name="numero_facture" class="form-control" value="{{ $maintenance->numero_facture }}" required>
                             </div>
                         </div>
-
                         <!-- Ajoutez les autres champs de formulaire de manière similaire -->
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
@@ -52,39 +50,28 @@
                                 <input type="number" name="cout" class="form-control" value="{{ $maintenance->cout }}" required>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Date Début</label>
                                 <input type="date" name="date_debut" class="form-control" value="{{ $maintenance->date_debut }}" required>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Date Fin</label>
                                 <input type="date" name="date_Fin" class="form-control" value="{{ $maintenance->date_Fin }}" required>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="id_type_maintenance">Type maintenance</label>
-                                <select name="id_type_maintenance" class="form-control select2">
-                                    @foreach($typesMaintenance as $typeMaintenance)
-                                        <option value="{{ $typeMaintenance->id_type_maintenance }}" {{ $maintenance->id_type_maintenance == $typeMaintenance->id_type_maintenance ? 'selected' : '' }}>{{ $typeMaintenance->type_maintenance }}</option>
-                                    @endforeach
+                                <label class="control-label">Type Maintenance</label>
+                                <select name="type" class="form-control controle select2">
+                                    <option value="Reparation" {{ $maintenance->type == 'Réparation' ? 'selected' : '' }}>Réparation</option>
+                                    <option value="Entretien" {{ $maintenance->type == 'Entretien' ? 'selected' : '' }}>Entretien</option>
+                                    <option value="Autres" {{ $maintenance->type == 'Autres' ? 'selected' : '' }}>Autres</option>
                                 </select>
                             </div>
                         </div>
-
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="travaux">Travaux:</label>
-                                <textarea name="travaux" required>{{ $maintenance->travaux }}</textarea>
-                            </div>
-                        </div>
-
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label class="control-label">Statut</label>
@@ -95,9 +82,16 @@
                                 </select>
                             </div>
                         </div>
+                          <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="travaux">Travaux:</label>
+                                <textarea name="travaux" required>{{ $maintenance->travaux }}</textarea>
+                            </div>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                    <button type="submit" class="btn btn-primary" onclick="alert('Bouton cliqué')">Mettre à jour</button>
+
                 </form>
             </div>
         </div>

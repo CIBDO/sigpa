@@ -53,7 +53,7 @@
                         <li class="submenu">
                             <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/quotation1.svg')}}" alt="img"><span>Maintenances</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="{{route('type_maintenances.list')}}">Type Maintenance</a></li>
+                                <li><a href="{{route('categories.list')}}">Type Maintenance</a></li>
                                  <li><a href="{{route('prestataires.list')}}">Voir Prestataires </a></li>
                                 <li><a href="{{route('maintenances.formulaire')}}">Planifier</a></li>
                                 <li><a href="{{route('maintenances.list')}}">Détails Maintenance</a></li>
@@ -64,7 +64,7 @@
                             <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/users1.svg')}}" alt="img"><span>Chauffeurs</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="{{route('chauffeurs.formulaire')}}">Chauffeur</a></li>
-                                <li><a href="{{route('chauffeurs.list')}}">la lisste  </a></li>
+                                <li><a href="{{route('chauffeurs.list')}}">la liste  </a></li>
                                 {{-- <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
                                 <li><a href="createpurchasereturn.html">Add Purchase Return </a></li> --}}
                             </ul>
@@ -72,8 +72,8 @@
                         <li class="submenu">
                             <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/transfer1.svg')}}" alt="img"><span> Assurances</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="">List des Contrats</a></li>
-                                <li><a href="">Créer un Contrat </a></li>
+                                <li><a href="{{route('assurances.list')}}">Voir les Contrats</a></li>
+                                {{-- <li><a href="">Créer un Contrat </a></li> --}}
                                {{--  <li><a href="importtransfer.html">Import Transfer </a></li> --}}
                             </ul>
                         </li>

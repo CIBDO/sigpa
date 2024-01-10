@@ -71,16 +71,17 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-sm-6 col-12">
+                           <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="id_type_maintenance">Type maintenance</label>
-                                    <select name="id_type_maintenance" class="form-control select2">
-                                        @foreach($typesMaintenance as $typeMaintenance)
-                                            <option value="{{ $typeMaintenance->id_type_maintenance }}">{{ $typeMaintenance->type_maintenance }}</option>
-                                        @endforeach
+                                    <label class="control-label">Type Maintenance</label>
+                                    <select name="type" class="form-control controle select2">
+                                        <option value="Réparation">Réparation</option>
+                                        <option value="Entretien">Entretien</option>
+                                        <option value="Autres">Autres</option>
                                     </select>
                                 </div>
                             </div>
+
 
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">

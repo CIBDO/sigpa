@@ -39,11 +39,11 @@
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
                     </li>
-                    {{-- <li>
+                    <li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> --}}
+                    </li> 
                     <li>
                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
@@ -61,11 +61,11 @@
                             <th>Véhicule</th>
                             {{-- <th>Prestataire</th>
                             <th>Numéro Facture</th>
-                            <th>Coût</th> --}}
+                            <th>Coût</th>  --}}
                             <th>Date Début</th>
                             <th>Date Fin</th>
                             <th>Type maintenance</th>
-                            <th>Travaux</th>
+                            {{-- <th>Travaux</th> --}} 
                             <th>Statut</th>
                             <th>Action</th>
                         </tr>
@@ -76,45 +76,32 @@
                             <td>{{ $maintenance->vehicule->immatriculation }}</td>
                             {{-- <td>{{ $maintenance->prestataire->nom_prestataire }}</td>
                             <td>{{ $maintenance->numero_facture }}</td>
-                            <td>{{ $maintenance->cout }}</td> --}}
+                            <td>{{ $maintenance->cout }}</td>  --}}
                             <td>{{ $maintenance->date_debut }}</td>
                             <td>{{ $maintenance->date_fin }}</td>
-                            <td>{{ optional($maintenance->typeMaintenance)->type_maintenance }}</td>
-                            <td>{{ $maintenance->travaux }}</td>
+                            <td>{{ $maintenance->type}}</td>
+                            {{-- <td>{{ $maintenance->travaux }}</td>  --}}
                             <td>{{ $maintenance->statut }}</td>
-                            <td>
-            <a href="{{ route('maintenances.edit', ['maintenance' => $maintenance->id_maintenance]) }}" class="btn btn-sm btn-warning">Éditer</a>
-            
-            <!-- Bouton de suppression -->
-            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal{{ $maintenance->id_maintanance }}">
-                Supprimer
-            </button>
+                              <td>
+                                    <!-- Ajoutez des liens d'action pour chaque véhicule -->
+                                    <a class="me-3" href="{{route('maintenances.detail', ['maintenance' => $maintenance->id_maintenance])}}">
+                                        <img src="{{asset('assets/img/icons/eye.svg')}}" alt="img">
+                                    </a> 
+                                    <a class="me-3" href="{{ route('maintenances.edit', ['maintenance' => $maintenance->id_maintenance]) }}">
+                                        <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
+                                    </a>
+                                    <a href="{{ route('maintenances.destroy', ['maintenance' => $maintenance->id_maintenance]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette maintenance?'))
+                                       document.getElementById('delete-marque-form-{{$maintenance->id_maintenance}}').submit();">
+                                        <img src="{{asset('assets/img/icons/delete.svg')}}" alt="img">
+                                    </a>
+                                    <!-- Formulaire pour la suppression (à cacher par défaut) -->
+                                    <form id="delete-marque-form-{{$maintenance->id_maintenance}}" action="{{ route('maintenances.destroy', ['maintenance' => $maintenance->id_maintenance]) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
 
-            <!-- Modal de confirmation de suppression -->
-            <div class="modal fade" id="deleteModal{{ $maintenance->id_maintenance }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $maintenance->id_maintenance }}" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel{{ $maintenance->id_maintenance }}">Confirmer la suppression</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Êtes-vous sûr de vouloir supprimer cette maintenance ?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                            <form method="post" action="{{ route('maintenances.destroy', ['maintenance' => $maintenance->id_maintenance]) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
-                            </form>
-                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
+                                    <!-- Ajoutez d'autres actions si nécessaire -->
+                                </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -23,12 +23,12 @@
                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                          </div>
                          <div class="modal-body">
-                             <form action="{{ route('type_maintenances.store') }}" method="post" id="ajouterMarqueForm">
+                             <form action="{{ route('categories.store') }}" method="post" id="ajouterMarqueForm">
                                  @csrf
 
                                  <div class="mb-3">
                                      <label for="nom_marque" class="form-label">Type de Maintenance:</label>
-                                     <input type="text" class="form-control" name="type_maintenance" required>
+                                     <input type="text" class="form-control" name="type" required>
                                  </div>
                                  <div class="mb-3">
                                      <label for="description" class="form-label">Description:</label>
@@ -46,9 +46,9 @@
              <script>
                  document.addEventListener("DOMContentLoaded", function() {
                      $("#ajouterMarqueForm").submit(function(event) {
-                         var nomMarque = $("input[name='type_maintenance']").val();
+                         var nomMarque = $("input[name='type']").val();
                          if (!nomMarque.trim()) {
-                             alert("Veuillez entrer le nom de la catégorie.");
+                             alert("Veuillez entrer le nom du type.");
                              event.preventDefault();
                          }
                      });
@@ -94,11 +94,11 @@
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
                     </li>
-                    {{-- <li>
+                    <li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> --}}
+                    </li> 
                     <li>
                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
@@ -129,7 +129,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($typesMaintenance as $type_maintenance)
+                    @foreach($categories as $categorie)
                     <tr class="odd">
                         <td class="sorting_1">
                             <label class="checkboxs">
@@ -137,24 +137,24 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
-                        <td>{{$type_maintenance->id_type_maintenance}}</td>
-                        <td>{{$type_maintenance->type_maintenance}}</td>
-                        <td>{{$type_maintenance->description}}</td>
+                        <td>{{$categorie->id_categorie}}</td>
+                        <td>{{$categorie->type}}</td>
+                        <td>{{$categorie->description}}</td>
                         <!-- Ajoutez d'autres cellules de données au besoin -->
                         <td>
                             <!-- Ajoutez des liens d'action pour chaque marque -->
                            {{--  <a class="me-3" href="{{route('marques.detail', ['marque' => $marque->id_marque])}}">
                                 <img src="{{asset('assets/img/icons/eye.svg')}}" alt="img">
                             </a> --}}
-                            <a class="me-3" href="{{route('type_maintenances.edit', ['type_maintenance' => $type_maintenance->id_type_maintenance])}}">
+                            <a class="me-3" href="{{route('categories.edit', ['categorie' => $categorie->id_categorie])}}">
                                 <img src="{{asset('assets/img/icons/edit.svg')}}" alt="img">
                             </a>
-                            <a href="{{ route('type_maintenances.destroy', ['type_maintenance' => $type_maintenance->id_type_maintenance]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer?'))
-                                       document.getElementById('delete-marque-form-{{$type_maintenance->id_type_maintenance}}').submit();">
+                            <a href="{{ route('categories.destroy', ['categorie' => $categorie->id_categorie]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer?'))
+                                       document.getElementById('delete-marque-form-{{$categorie->id_categorie}}').submit();">
                                 <img src="{{asset('assets/img/icons/delete.svg')}}" alt="img">
                             </a>
                             <!-- Formulaire pour la suppression (à cacher par défaut) -->
-                            <form id="delete-marque-form-{{$type_maintenance->id_type_maintenance}}" action="{{ route('type_maintenances.destroy', ['type_maintenance' => $type_maintenance->id_type_maintenance]) }}" method="POST" style="display: none;">
+                            <form id="delete-marque-form-{{$categorie->id_categorie}}" action="{{ route('categories.destroy', ['categorie' => $categorie->id_categorie]) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>
