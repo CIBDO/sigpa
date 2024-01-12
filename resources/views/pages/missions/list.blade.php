@@ -67,6 +67,32 @@
                 </div>
             </div>
         </div>
+            <!-- Confirmation Modal -->
+            <div class="modal" tabindex="-1" role="dialog" id="confirmationModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmer les détails de la mission</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <input type="hidden" id="missionId" name="missionId" value="">
+                                <div class="form-group">
+                                    <label for="vehicleKilometrage">Kilométrage du véhicule</label>
+                                    <input name="kilometrage" type="text" class="form-control" id="vehicleKilometrage" placeholder="Entrer le kilométrage du véhicule">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Confirmer</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 $("#ajouterMissionForm").submit(function(event) {
@@ -178,6 +204,9 @@
                                 @csrf
                                 @method('DELETE')
                             </form>
+                            <button data-id="{{$mission->id_mission}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
+                                <i class="fa fa-check-circle"></i> Confirmer
+                            </button>
                         </td>
                     </tr>
                     @endforeach
@@ -186,6 +215,21 @@
         </div>
     </div>
 </div>
+{{--        ecris un tableau--}}
 
+@endsection
+@section('add-script')
+            <script>
+                $(document).ready(function() {
+                    $('button[data-target="#confirmationModal"]').click(function() {
+                        let missionId = $(this).data('id');
+                        $('#missionId').val(missionId);
+
+                        // Ensuite, déclenchez le modal
+                        // $("#confirmationModal").modal("show");
+                    });
+                });
+
+            </script>
 @endsection
 

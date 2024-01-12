@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Mission;
 use App\Models\Vehicule;
@@ -13,6 +14,7 @@ class MissionController extends Controller
 
     public function list()
     {
+        Flash::success('Confirmation','Mission confirmée');
         $missions = Mission::all(); // Remplacez cela par votre logique pour récupérer les missions
         $vehicules = Vehicule::all(); // Remplacez cela par votre logique pour récupérer les véhicules
 
@@ -45,7 +47,7 @@ class MissionController extends Controller
         $mission->trajet = $request->trajet;
         $mission->id_vehicule = $request->id_vehicule;
         $mission->save();
-       
+
         return redirect()->route('missions.list')->with('success', 'Mission créée avec succès.');
     }
 
@@ -89,5 +91,16 @@ class MissionController extends Controller
         $mission->delete();
 
         return redirect()->route('pages.missions.list')->with('success', 'Mission supprimée avec succès.');
+    }
+    public function confirmation(Request $request)
+    {
+        $mission = Mission::findOrFail($request->mission_id);
+        $mission->kilometrage = $request->kilometrage;
+        if ($mission->save()){
+            Flash::success('Confirmation','Mission confirmée');
+        }
+
+        return redirect()->route('pages.missions.list');
+
     }
 }

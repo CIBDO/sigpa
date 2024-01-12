@@ -52,7 +52,7 @@
                 printContent();
             });
         });
-        
+
     </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -71,5 +71,6 @@
     <script src="{{asset('assets/plugins/apexchart/chart-data.js')}}"></script>
 
     <script src="{{asset('assets/js/script.js')}}"></script>
+@yield('add-script')
 </body>
 </html>
