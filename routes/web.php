@@ -108,7 +108,7 @@ Route::delete('/chauffeurs/{chauffeur}', [ChauffeurController::class, 'destroy']
 Route::get('/missions', [MissionController::class, 'list'])->name('missions.list');
 Route::get('missions/formulaire', [MissionController::class, 'formulaire'])->name('missions.formulaire');
 Route::post('/missions', [MissionController::class, 'store'])->name('missions.store');
-Route::post('/missions/confirmation', [MissionController::class, 'confirmation'])->name('missions.store');
+Route::post('/missions/confirmation', [MissionController::class, 'confirmation'])->name('missions.confirmation');
 Route::get('missions/detail', [MissionController::class, 'detail'])->name('missions.detail');
 Route::get('missions/edit/{mission}', [MissionController::class, 'edit'])->name('missions.edit');
 Route::put('missions/update{mission}', [MissionController::class, 'update'])->name('missions.update');

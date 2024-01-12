@@ -78,7 +78,8 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="">
+                            <form action="{{route('missions.confirmation')}}" method="post" id="confirmationForm">
+                                @csrf
                                 <input type="hidden" id="missionId" name="missionId" value="">
                                 <div class="form-group">
                                     <label for="vehicleKilometrage">Kilométrage du véhicule</label>
@@ -165,6 +166,8 @@
                         {{-- <th>Objectif</th> --}}
                         <th>Date de Début</th>
                         <th>Date de Fin</th>
+                        <th>Véhicule</th>
+                        <th>Kilométrage</th>
                         {{-- <th>Trajet</th>
                         <th>Véhicule</th> --}}
                         <!-- Ajoutez d'autres colonnes au besoin -->
@@ -184,29 +187,36 @@
                         {{-- <td>{{ $mission->objectif }}</td> --}}
                         <td>{{ $mission->date_debut }}</td>
                         <td>{{ $mission->date_fin }}</td>
-                       {{--  <td>{{ $mission->trajet }}</td>
-                        <td>{{ $mission->vehicule->immatriculation }}</td> --}}
+                        <td>{{ $mission->vehicule->immatriculation }}</td>
+                        <td>{{ $mission->kilometrage }} Km</td>
+                       {{--  <td>{{ $mission->trajet }}</td>--}}
                         <!-- Ajoutez d'autres cellules de données au besoin -->
                         <td>
                             <!-- Ajoutez des liens d'action pour chaque mission -->
                             {{-- <a class="me-3" href="{{ route('missions.detail', ['mission' => $mission->id_mission]) }}">
                             <img src="{{ asset('assets/img/icons/eye.svg') }}" alt="img">
                             </a> --}}
-                            <a class="me-3" href="{{ route('missions.edit', ['mission' => $mission->id_mission]) }}">
-                                <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
-                            </a>
-                            <a href="{{ route('missions.destroy', ['mission' => $mission->id_mission]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette mission?'))
+                            @if(!$mission->kilometrage)
+
+                                <a class="me-3" href="{{ route('missions.edit', ['mission' => $mission->id_mission]) }}">
+                                    <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
+                                </a>
+                                <a href="{{ route('missions.destroy', ['mission' => $mission->id_mission]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette mission?'))
                                     document.getElementById('delete-mission-form-{{$mission->id_mission}}').submit();">
-                                <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="img">
-                            </a>
-                            <!-- Formulaire pour la suppression (à cacher par défaut) -->
-                            <form id="delete-mission-form-{{$mission->id_mission}}" action="{{ route('missions.destroy', ['mission' => $mission->id_mission]) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                            <button data-id="{{$mission->id_mission}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
-                                <i class="fa fa-check-circle"></i> Confirmer
-                            </button>
+                                    <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="img">
+                                </a>
+                                <!-- Formulaire pour la suppression (à cacher par défaut) -->
+                                <form id="delete-mission-form-{{$mission->id_mission}}" action="{{ route('missions.destroy', ['mission' => $mission->id_mission]) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <button data-id="{{$mission->id_mission}}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
+                                    <i class="fa fa-check-circle"></i> Confirmer
+                                </button>
+                            @else
+                                <i class="fa fa-check-circle text-green"></i>
+                            @endif
+
                         </td>
                     </tr>
                     @endforeach
@@ -227,6 +237,9 @@
 
                         // Ensuite, déclenchez le modal
                         // $("#confirmationModal").modal("show");
+                    });
+                    $('#confirmationModal .btn-primary').click(function() {
+                        $('#confirmationForm').submit();
                     });
                 });
 

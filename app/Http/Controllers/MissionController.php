@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\helpers\MyNotifications;
+use App\helpers\Notifications;
 use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Mission;
@@ -14,6 +16,7 @@ class MissionController extends Controller
 
     public function list()
     {
+        dd(MyNotifications::carToMaintain());
         Flash::success('Confirmation','Mission confirmée');
         $missions = Mission::all(); // Remplacez cela par votre logique pour récupérer les missions
         $vehicules = Vehicule::all(); // Remplacez cela par votre logique pour récupérer les véhicules
@@ -94,13 +97,13 @@ class MissionController extends Controller
     }
     public function confirmation(Request $request)
     {
-        $mission = Mission::findOrFail($request->mission_id);
+        $mission = Mission::findOrFail($request->missionId);
         $mission->kilometrage = $request->kilometrage;
         if ($mission->save()){
             Flash::success('Confirmation','Mission confirmée');
         }
 
-        return redirect()->route('pages.missions.list');
+        return redirect()->route('missions.list');
 
     }
 }
