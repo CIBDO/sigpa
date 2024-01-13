@@ -3,6 +3,8 @@
 namespace App\helpers;
 
 use App\Models\Mission;
+use App\Models\Vehicule;
+use App\Models\Vidange;
 use Illuminate\Support\Facades\DB;
 
 class MyNotifications
@@ -15,9 +17,44 @@ class MyNotifications
             ->groupBy('missions.id_vehicule', 'vehicules.immatriculation')
             ->get();
 //        dd($totalKilometragePerVehicle);
-        foreach ($totalKilometragePerVehicle as $item){
+        foreach ($totalKilometragePerVehicle as $item) {
             dd($item);
         }
+
+    }
+
+    public static function getVehiclesNeedingOilChange()
+    {
+        $maxKilometrageForOilChange = config('notifications.maxKilometrageForOilChange');
+        $mostRecentKilometragePerVehicle = Mission::select('id_vehicule', DB::raw('MAX(kilometrage) as max_kilometrage'))
+            ->groupBy('id_vehicule')
+            ->get()->keyBy('id_vehicule');
+
+        $mostRecentOilChangeKilometragePerVehicle = Vidange::select('id_vehicule', DB::raw('MAX(kilometrage_vidange) as max_kilometrage_vidange'))
+            ->groupBy('id_vehicule')
+            ->get()->keyBy('id_vehicule');
+
+        $vehiclesNeedingOilChange = [];
+
+        foreach ($mostRecentKilometragePerVehicle as $vehicleId => $vehicleData) {
+            $lastOilChangeKilometrage = $mostRecentOilChangeKilometragePerVehicle[$vehicleId]->max_kilometrage_vidange ?? 0;
+
+            if ($vehicleData->max_kilometrage - $lastOilChangeKilometrage > $maxKilometrageForOilChange) {
+                $vehicle = Vehicule::find($vehicleId);
+                $vehiclesNeedingOilChange[] = [
+                    'id' => $vehicleId,
+                    'immatriculation' => $vehicle->immatriculation,
+                    'max_kilometrage' => $vehicleData->max_kilometrage,
+                ];
+            }
+        }
+
+        return $vehiclesNeedingOilChange;
+    }
+
+    public static function sumNotifications()
+    {
+        return count(MyNotifications::getVehiclesNeedingOilChange());
 
     }
 

@@ -83,6 +83,8 @@ Route::delete('/prestataires/{prestataire}', [PrestataireController::class, 'des
 Route::get('/vehicules', [VehiculeController::class, 'list'])->name('vehicules.list');
 Route::get('vehicules/formulaire', [VehiculeController::class, 'formulaire'])->name('vehicules.formulaire');
 Route::post('/vehicules', [VehiculeController::class, 'store'])->name('vehicules.store');
+Route::post('/vehicules/vidange', [VehiculeController::class, 'vidange'])->name('vehicules.vidange');
+
 Route::get('vehicules/detail', [VehiculeController::class, 'detail'])->name('vehicules.detail');
 Route::get('vehicules/edit/{vehicule}', [VehiculeController::class, 'edit'])->name('vehicules.edit');
 Route::put('vehicules/update/{vehicule}', [VehiculeController::class, 'update'])->name('vehicules.update');

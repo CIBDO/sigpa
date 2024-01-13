@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vidange;
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Vehicule;
 use App\Models\Modele;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class VehiculeController extends Controller
 {
-   
+
 
     public function list()
     {
@@ -57,7 +59,7 @@ public function store(Request $request)
 
     public function edit(Vehicule $vehicule)
     {
-       
+
         $modeles = Modele::all();
         $marques = Marque::all();
         return view('pages.vehicules.edit', compact('vehicule', 'modeles', 'marques'));
@@ -104,5 +106,21 @@ public function store(Request $request)
 
         return redirect()->route('vehicules.list')
             ->with('success', 'Véhicule supprimé avec succès');
+    }
+
+    public function vidange(Request $request)
+    {
+        $vehicule = Vehicule::findOrFail($request->vehiculeId);
+        $vehicule->date_vidange = $request->date;
+        if ($vehicule->save()){
+            $vidange = new Vidange();
+            $vidange->id_vehicule = $request->vehiculeId;
+            $vidange->date = $request->date;
+            $vidange->save();
+
+            Flash::success('Confirmation','Vidange confirmée');
+        }
+        return redirect()->route('vehicules.list')->with('success', 'Vidange confirmée avec succès');
+
     }
 }

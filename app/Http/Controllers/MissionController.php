@@ -16,7 +16,9 @@ class MissionController extends Controller
 
     public function list()
     {
-        dd(MyNotifications::carToMaintain());
+//        dd(MyNotifications::sumNotifications());
+//        dd(MyNotifications::carToMaintain());
+//        dd(MyNotifications::getVehiclesNeedingOilChange()[0]);
         Flash::success('Confirmation','Mission confirmée');
         $missions = Mission::all(); // Remplacez cela par votre logique pour récupérer les missions
         $vehicules = Vehicule::all(); // Remplacez cela par votre logique pour récupérer les véhicules
@@ -103,7 +105,7 @@ class MissionController extends Controller
             Flash::success('Confirmation','Mission confirmée');
         }
 
-        return redirect()->route('missions.list');
+        return redirect()->route('missions.list')->with('success', 'Mission confirmée avec succès.');
 
     }
 }
