@@ -28,6 +28,12 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <style>
+        .alert0n{
+            position: relative;
+            top: -10px;
+        }
+    </style>
 </head>
 <body>
     <div id="global-loader">

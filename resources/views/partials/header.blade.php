@@ -95,6 +95,20 @@
                                         </a>
                                     </li>
                                 @endforeach
+                                @foreach(\App\helpers\MyNotifications::getDriversWithInsuranceExpiringSoon() as $assurance)
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="{{asset('assets/img/protection.png')}}">
+                                            </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">L'assurance du véhicule {{$assurance->vehicule->immatriculation}} doit être renouvelée</span></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
 
                             </ul>
                         </div>

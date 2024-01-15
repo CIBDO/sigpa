@@ -68,10 +68,18 @@ class MyNotifications
         return Chauffeur::where('validite_permis', '<=', $dateThreshold)->get();
     }
 
-    public static function getDriversWithInsuranceExpiringSoon()
+    public static function getDriversWithInsuranceExpiringSoon($id = null)
     {
         $days = config('notifications.renouvellementAssurance');
         $dateThreshold = \Carbon\Carbon::now()->addDays($days);
+
+        if ($id) {
+            return (bool)Assurance::where('id_assurance', $id)
+                ->where(function ($query) use ($dateThreshold) {
+                    $query->where('date_fin', '<=', $dateThreshold);
+                })
+                ->first();
+        }
 
         return Assurance::where('date_fin', '<=', $dateThreshold)->get();
     }
