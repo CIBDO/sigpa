@@ -71,11 +71,25 @@
                                         <a href="#">
                                             <div class="media d-flex">
                                             <span class="avatar flex-shrink-0">
-                                                <img alt="" src="{{asset('assets/img/huile-de-voiture.png')}}">
+                                                <img alt="" src="{{asset('assets/img/service-automobile.png')}}">
                                             </span>
                                                 <div class="media-body flex-grow-1">
                                                     <p class="noti-details"><span class="noti-title">Le vehicule {{$vehicles['immatriculation']}} a besoin de vidange</span></p>
 {{--                                                    <p class="noti-time"><span class="notification-time">4 mins ago</span></p>--}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                                @foreach(\App\helpers\MyNotifications::getDriversWithLicenseExpiringSoon() as $driver)
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" src="{{asset('assets/img/licence.png')}}">
+                                            </span>
+                                                <div class="media-body flex-grow-1">
+                                                    <p class="noti-details"><span class="noti-title">Le permis de {{$driver->prenom}} {{$driver->nom}} doit être renouvelée</span></p>
                                                 </div>
                                             </div>
                                         </a>

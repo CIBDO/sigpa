@@ -1,5 +1,6 @@
 <?php
 
+use App\helpers\MyNotifications;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\MarqueController;
@@ -31,10 +32,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('pages.home.index');
-})->name('home');
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 /* Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); */

@@ -2,6 +2,8 @@
 
 namespace App\helpers;
 
+use App\Models\Assurance;
+use App\Models\Chauffeur;
 use App\Models\Mission;
 use App\Models\Vehicule;
 use App\Models\Vidange;
@@ -52,10 +54,26 @@ class MyNotifications
         return $vehiclesNeedingOilChange;
     }
 
-    public static function sumNotifications()
+    public static function sumNotifications(): int
     {
-        return count(MyNotifications::getVehiclesNeedingOilChange());
+        return count(MyNotifications::getVehiclesNeedingOilChange()) + count(MyNotifications::getDriversWithLicenseExpiringSoon()) + count(MyNotifications::getDriversWithInsuranceExpiringSoon());
 
+    }
+
+    public static function getDriversWithLicenseExpiringSoon()
+    {
+        $days = config('notifications.renouvellementPermis');
+        $dateThreshold = \Carbon\Carbon::now()->addDays($days);
+
+        return Chauffeur::where('validite_permis', '<=', $dateThreshold)->get();
+    }
+
+    public static function getDriversWithInsuranceExpiringSoon()
+    {
+        $days = config('notifications.renouvellementAssurance');
+        $dateThreshold = \Carbon\Carbon::now()->addDays($days);
+
+        return Assurance::where('date_fin', '<=', $dateThreshold)->get();
     }
 
 }
