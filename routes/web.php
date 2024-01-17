@@ -1,6 +1,7 @@
 <?php
 
 use App\helpers\MyNotifications;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\MarqueController;
@@ -32,7 +33,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/login-page',[UserController::class,'showLoginForm'])->name('login-page');
+Route::post('/authentication', [UserController::class,'authenticate'])->name('authentication');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
 /* Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); */
 //MARQUES
