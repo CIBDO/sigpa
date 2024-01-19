@@ -40,9 +40,13 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/login-page',[UserController::class,'showLoginForm'])->name('login-page');
 Route::post('/authentication', [UserController::class,'authenticate'])->name('authentication');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [UserController::class, 'register'])->name('register');
 
 Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
@@ -149,7 +153,7 @@ Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('a
 Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
 Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
 Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');
-<<<<<<< HEAD
+
 //Incidents  
 Route::get('/incidents', [IncidentController::class, 'list'])->name('incidents.list');
 Route::get('incidents/formulaire', [IncidentController::class, 'formulaire'])->name('incidents.formulaire');
@@ -171,5 +175,4 @@ Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRa
 Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');
 
 
-=======
->>>>>>> c038c20793a1b7040a4aebc62dc1d397e1c33c09
+

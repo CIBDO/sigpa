@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -27,6 +29,7 @@ class UserController extends Controller
     {
         //
     }
+// Création d'une nouvelle instance d'utilisateur
 
     /**
      * Store a newly created user in storage.
@@ -34,9 +37,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return Response
      */
+    
     public function store(Request $request)
     {
-        //
+     
     }
 
     /**
@@ -87,17 +91,14 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-//        dd($credentials);
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            return redirect()->intended('/');
+            // L'authentification a réussi
+            return redirect()->intended('/dashboard'); // Redirection vers la page souhaitée après la connexion
+        } else {
+            // L'authentification a échoué
+            return redirect()->route('login-page')->with('error', 'Identifiants incorrects.');
         }
-
-        // Authentication failed...
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
     }
 
 
@@ -111,5 +112,33 @@ class UserController extends Controller
         Auth::logout();
 
         return redirect('/login-page');
+    }
+    public function register(Request $request)
+    {
+        // Validation des données (facultatif, mais recommandé)
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|min:5',
+        ]);
+
+        // Création d'une nouvelle instance d'utilisateur
+        $user = new User();
+
+        // Remplissage des informations de l'utilisateur à partir des données du formulaire
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+
+        // Sauvegarde de l'utilisateur dans la base de données
+        $user->save();
+
+        // Redirection avec un message de succès
+        return redirect()->route('login-page')->with('success', 'Compte créé avec succès! Vous pouvez maintenant vous connecter.');
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('pages.auth.register');
     }
 }

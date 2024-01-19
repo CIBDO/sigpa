@@ -28,6 +28,20 @@
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
             </form>
+            <p><a href="{{ route('register') }}">Inscrivez-vous ici</a>.</p>
+            @if(session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
             <div class="social-login">
                 <h3>log</h3>
                 <div class="social-icons">
