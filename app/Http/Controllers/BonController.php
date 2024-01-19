@@ -3,62 +3,85 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bon;
+use App\Models\Vehicule;
+
 
 class BonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+   
+    public function list()
     {
-        //
+        $bons = Bon::all();
+        $vehicules = Vehicule::all();
+        return view('pages.bons.list', compact('bons','vehicules'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    
+    public function detail($id_bon)
     {
-        //
+        $bon = Bon::findOrFail($id_bon);
+        return view('pages.bons.detail', compact('bon'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function formulaire()
+    {
+        
+        $bons = Bon::all();
+        $vehicules = Vehicule::all();
+        return view('pages.bons.formulaire');
+    }
+
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_vehicule' => 'required',
+            'numero_bon' => 'required',
+            'date_delivrance' => 'required',
+            'quantite' => 'required',
+            'valeur_espece' => 'required',
+        ]);
+
+        Bon::create($request->all());
+
+        return redirect()->route('bons.list')
+            ->with('success', 'Bon créé avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+   
+    public function edit($id_bon)
     {
-        //
+        $bon = Bon::findOrFail($id_bon);
+        $vehicules = Vehicule::all();
+        return view('pages.bons.edit', compact('bon','vehicules'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    
+    public function update(Request $request, $id_bon)
     {
-        //
+        $request->validate([
+            'id_vehicule' => 'required',
+            'numero_bon' => 'required',
+            'date_delivrance' => 'required',
+            'quantite' => 'required',
+            'valeur_espece' => 'required',
+        ]);
+
+        $bon = Bon::findOrFail($id_bon);
+        $bon->update($request->all());
+
+        return redirect()->route('bons.list')
+            ->with('success', 'Bon mis à jour avec succès');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+   
+    public function destroy($id_bon)
     {
-        //
-    }
+        $bon = Bon::findOrFail($id_bon);
+        $bon->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('bons.list')
+            ->with('success', 'Bon supprimé avec succès');
     }
 }

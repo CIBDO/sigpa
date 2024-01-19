@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('gravite');
             $table->text('degat');
             $table->text('description');
-            $table->string('fichiers');
+            $table->json('fichiers')->nullable();
             $table->foreign('id_vehicule')->references('id_vehicule')->on('vehicules');
             $table->timestamps();
         });

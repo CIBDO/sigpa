@@ -7,6 +7,9 @@
                 {{ session('success') }}
             </div>
             @endif
+            <form action="{{ route('assurances.update', $assurance->id_assurance) }}" method="post">
+            @csrf
+                                    @method('PUT')
 <!-- Champs de formulaire pour l'édition -->
 <div class="mb-3">
     <label for="id_vehicule" class="form-label">Véhicule:</label>
@@ -63,7 +66,7 @@
         var joursRestantInput = document.getElementById('jours_restant_edition');
 
         // Ajoutez un gestionnaire d'événement pour le changement de valeur des champs de date
-        dateDebutInput.addEventListener('change', updateJoursRestantEdition);
+        dateDebutInpuPHP ARTISAN SERVE t.addEventListener('change', updateJoursRestantEdition);
         dateFinInput.addEventListener('change', updateJoursRestantEdition);
 
         // Fonction pour mettre à jour le champ jours restants
@@ -91,8 +94,8 @@
 </script>
 
 <!-- Bouton de soumission -->
-<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-
+<button type="submit" class="btn btn-primary">Enregistrer les modifications </button>
+</form>
 
         </div>
     </div>

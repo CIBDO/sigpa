@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incident extends Model
 {
+    protected $primaryKey = 'id_incident';
     protected $fillable = [
         'id_vehicule',
         'date_incident',
@@ -15,14 +16,15 @@ class Incident extends Model
         'gravite',
         'degat',
         'description',
-        'fichiers',
+        
     ];
 
     public function vehicule()
     {
         return $this->belongsTo(Vehicule::class, 'id_vehicule');
     }
-
-    // Ajoutez d'autres relations et méthodes au besoin
+    public function files()
+    {
+        return $this->hasMany(IncidentFile::class, 'id_incident');
+    }
 }
-

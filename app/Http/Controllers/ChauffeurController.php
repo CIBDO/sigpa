@@ -52,11 +52,12 @@ class ChauffeurController extends Controller
 
     public function edit($id_chauffeur)
     {
+        $services = Service::all();
         $chauffeur = Chauffeur::findOrFail($id_chauffeur);
-        return view('pages.chauffeurs.edit', compact('chauffeur'));
+        return view('pages.chauffeurs.edit', compact('chauffeur', 'services'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_chauffeur)
     {
         // Valider les données du formulaire
         $request->validate([
@@ -74,7 +75,8 @@ class ChauffeurController extends Controller
         ]);
 
         // Mettre à jour le chauffeur
-        $chauffeur = Chauffeur::findOrFail($id);
+        $services = Service::all();
+        $chauffeur = Chauffeur::findOrFail($id_chauffeur);
         $chauffeur->update($request->all());
 
         // Rediriger vers la liste des chauffeurs avec un message de succès

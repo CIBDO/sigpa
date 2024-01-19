@@ -159,8 +159,10 @@ return [
         HepplerDotNet\FlashToastr\FlashServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
        
         // App\Providers\BroadcastServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
@@ -182,6 +184,7 @@ return [
             // ...
             'Excel' => Maatwebsite\Excel\Facades\Excel::class,
             'Flash' => HepplerDotNet\FlashToastr\Flash::class,
+            
         ],
         
     ])->toArray(),

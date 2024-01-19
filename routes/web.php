@@ -14,9 +14,16 @@ use App\Http\Controllers\MissionController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\AssuranceController;
+use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\BonController;
+use App\Http\Controllers\RapportVehiculesController;
+use App\Http\Controllers\FiltreController;
+use App\Http\Controllers\RapportMaintenancesController;
+
 
 use App\Models\Affectation;
 use App\Models\Chauffeur;
+use App\Models\Incident;
 use App\Models\Mission;
 use App\Models\Vehicule;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -137,3 +144,24 @@ Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('a
 Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
 Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
 Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');
+//Incidents  
+Route::get('/incidents', [IncidentController::class, 'list'])->name('incidents.list');
+Route::get('incidents/formulaire', [IncidentController::class, 'formulaire'])->name('incidents.formulaire');
+Route::post('/incidents', [IncidentController::class, 'store'])->name('incidents.store');
+Route::get('/incidents/detail/{id_incident}', [IncidentController::class, 'detail'])->name('incidents.detail');
+Route::get('incidents/edit/{incident}', [IncidentController::class, 'edit'])->name('incidents.edit');
+Route::put('incidents/update/{incident}', [IncidentController::class, 'update'])->name('incidents.update');
+Route::delete('/incidents{incident}', [IncidentController::class, 'destroy'])->name('incidents.destroy');
+//Incidents  
+Route::get('/bons', [BonController::class, 'list'])->name('bons.list');
+Route::get('bons/formulaire', [BonController::class, 'formulaire'])->name('bons.formulaire');
+Route::post('/bons', [BonController::class, 'store'])->name('bons.store');
+Route::get('/bons/detail/{id_bon}', [BonController::class, 'detail'])->name('bons.detail');
+Route::get('bons/edit/{bon}', [BonController::class, 'edit'])->name('bons.edit');
+Route::put('bons/update/{bon}', [BonController::class, 'update'])->name('bons.update');
+Route::delete('/bons{bon}', [BonController::class, 'destroy'])->name('bons.destroy');
+
+Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRapport'])->name('rapport.vehicules');
+Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');
+
+
