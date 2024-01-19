@@ -149,8 +149,7 @@ Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('a
 Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
 Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
 Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');
-<<<<<<< HEAD
-//Incidents  
+//Incidents
 Route::get('/incidents', [IncidentController::class, 'list'])->name('incidents.list');
 Route::get('incidents/formulaire', [IncidentController::class, 'formulaire'])->name('incidents.formulaire');
 Route::post('/incidents', [IncidentController::class, 'store'])->name('incidents.store');
@@ -158,7 +157,7 @@ Route::get('/incidents/detail/{id_incident}', [IncidentController::class, 'detai
 Route::get('incidents/edit/{incident}', [IncidentController::class, 'edit'])->name('incidents.edit');
 Route::put('incidents/update/{incident}', [IncidentController::class, 'update'])->name('incidents.update');
 Route::delete('/incidents{incident}', [IncidentController::class, 'destroy'])->name('incidents.destroy');
-//Incidents  
+//Incidents
 Route::get('/bons', [BonController::class, 'list'])->name('bons.list');
 Route::get('bons/formulaire', [BonController::class, 'formulaire'])->name('bons.formulaire');
 Route::post('/bons', [BonController::class, 'store'])->name('bons.store');
@@ -171,5 +170,3 @@ Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRa
 Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');
 
 
-=======
->>>>>>> c038c20793a1b7040a4aebc62dc1d397e1c33c09
