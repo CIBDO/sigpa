@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <style>
+        .alert0n{
+            position: relative;
+            top: -10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,6 +57,7 @@
                 printContent();
             });
         });
+
     </script>
 
     <script src="{{asset('assets/js/feather.min.js')}}"></script>
@@ -61,6 +68,7 @@
     <script src="{{asset('assets/plugins/apexchart/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/plugins/apexchart/chart-data.js')}}"></script>
     <script src="{{asset('assets/js/script.js')}}"></script>
+@yield('add-script')
 </body>
 
 </html>

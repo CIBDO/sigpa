@@ -1,5 +1,7 @@
 <?php
 
+use App\helpers\MyNotifications;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\MarqueController;
@@ -38,11 +40,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/login-page',[UserController::class,'showLoginForm'])->name('login-page');
+Route::post('/authentication', [UserController::class,'authenticate'])->name('authentication');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/', function () {
-    return view('pages.home.index');
-})->name('home');
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
 /* Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); */
 //MARQUES
@@ -70,7 +72,7 @@ Route::get('/detail', [ModeleController::class, 'detail'])->name('modeles.detail
 Route::get('/edit/{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
 Route::put('/update/{modele}', [ModeleController::class, 'update'])->name('modeles.update');
 Route::delete('/modeles/{modele}', [ModeleController::class, 'destroy'])->name('modeles.destroy');
-// SERVICES 
+// SERVICES
 Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
 Route::get('/formulaire', [ServiceController::class, 'formulaire'])->name('services.formulaire');
 Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
@@ -90,6 +92,8 @@ Route::delete('/prestataires/{prestataire}', [PrestataireController::class, 'des
 Route::get('/vehicules', [VehiculeController::class, 'list'])->name('vehicules.list');
 Route::get('vehicules/formulaire', [VehiculeController::class, 'formulaire'])->name('vehicules.formulaire');
 Route::post('/vehicules', [VehiculeController::class, 'store'])->name('vehicules.store');
+Route::post('/vehicules/vidange', [VehiculeController::class, 'vidange'])->name('vehicules.vidange');
+
 Route::get('vehicules/detail', [VehiculeController::class, 'detail'])->name('vehicules.detail');
 Route::get('vehicules/edit/{vehicule}', [VehiculeController::class, 'edit'])->name('vehicules.edit');
 Route::put('vehicules/update/{vehicule}', [VehiculeController::class, 'update'])->name('vehicules.update');
@@ -115,6 +119,7 @@ Route::delete('/chauffeurs/{chauffeur}', [ChauffeurController::class, 'destroy']
 Route::get('/missions', [MissionController::class, 'list'])->name('missions.list');
 Route::get('missions/formulaire', [MissionController::class, 'formulaire'])->name('missions.formulaire');
 Route::post('/missions', [MissionController::class, 'store'])->name('missions.store');
+Route::post('/missions/confirmation', [MissionController::class, 'confirmation'])->name('missions.confirmation');
 Route::get('missions/detail', [MissionController::class, 'detail'])->name('missions.detail');
 Route::get('missions/edit/{mission}', [MissionController::class, 'edit'])->name('missions.edit');
 Route::put('missions/update{mission}', [MissionController::class, 'update'])->name('missions.update');
@@ -136,7 +141,7 @@ Route::get('categories/detail', [CategorieController::class, 'detail'])->name('c
 Route::get('categories/edit/{categorie}', [CategorieController::class, 'edit'])->name('categories.edit');
 Route::put('categories/update/{categorie}', [CategorieController::class, 'update'])->name('categories.update');
 Route::delete('/categories{categorie}', [CategorieController::class, 'destroy'])->name('categories.destroy');
-//Assurances 
+//Assurances
 Route::get('/assurances', [AssuranceController::class, 'list'])->name('assurances.list');
 Route::get('assurances/formulaire', [AssuranceController::class, 'formulaire'])->name('assurances.formulaire');
 Route::post('/assurances', [AssuranceController::class, 'store'])->name('assurances.store');
@@ -144,6 +149,7 @@ Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('a
 Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
 Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
 Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');
+<<<<<<< HEAD
 //Incidents  
 Route::get('/incidents', [IncidentController::class, 'list'])->name('incidents.list');
 Route::get('incidents/formulaire', [IncidentController::class, 'formulaire'])->name('incidents.formulaire');
@@ -165,3 +171,5 @@ Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRa
 Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');
 
 
+=======
+>>>>>>> c038c20793a1b7040a4aebc62dc1d397e1c33c09
