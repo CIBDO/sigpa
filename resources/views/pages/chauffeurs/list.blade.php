@@ -41,11 +41,11 @@
                                     <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                                 </a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                     <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                                 </a>
-                            </li> --}}
+                            </li> 
                             <li>
                                 {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList(); return false;">
@@ -103,9 +103,9 @@
                                 {{-- <td>{{ $chauffeur->service ? $chauffeur->service->nom_service : 'NOT NULL' }}</td> --}}
                                 <td>
                                     <!-- Ajoutez des liens d'action pour chaque chauffeur -->
-                                    <a class="me-3" href="{{ route('chauffeurs.detail', ['chauffeur' => $chauffeur->id_chauffeur]) }}">
+                                    {{-- <a class="me-3" href="{{ route('chauffeurs.detail', ['chauffeur' => $chauffeur->id_chauffeur]) }}">
                                         <img src="{{asset('assets/img/icons/eye.svg')}}" alt="img">
-                                    </a> 
+                                    </a> --}} 
                                     <a class="me-3" href="{{ route('chauffeurs.edit', ['chauffeur' => $chauffeur->id_chauffeur]) }}">
                                         <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
                                     </a>

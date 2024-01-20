@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 namespace App\Http\Controllers;
 
@@ -7,6 +7,7 @@ use App\Exports\MarquesExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use App\Models\Marque;
+
 
 class ExportController extends Controller
 {
@@ -25,4 +26,6 @@ class ExportController extends Controller
         // Logique pour l'export Excel
         return Excel::download(new MarquesExport, 'marques.xlsx');
     }
+
+    
 }

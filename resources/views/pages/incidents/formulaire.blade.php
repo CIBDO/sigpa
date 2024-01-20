@@ -19,8 +19,9 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="id_vehicule">Véhicule :</label>
+                                <label for="id_vehicule">Véhicule:<span class="required">*</span></label>
                                 <select name="id_vehicule" id="id_vehicule" class="form-control">
+                                <option selected disabled>Sélectionner le Véhicule</option>
                                     @foreach ($vehicules as $vehicule)
                                     <option value="{{ $vehicule->id_vehicule }}">{{ $vehicule->immatriculation }}</option>
                                     @endforeach
@@ -30,14 +31,14 @@
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="date_incident">Date de l'incident :</label>
+                                <label for="date_incident">Date d'incident<span class="required">*</span></label>
                                 <input type="date" name="date_incident" id="date_incident" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="gravite">Gravité :</label>
+                                <label for="gravite">Gravité:<span class="required">*</span></label>
                                 <select name="gravite" class="form-control controle select2">
                                     <option selected disabled>Sélectionner</option>
                                     <option value="Grave">Grave</option>
@@ -49,20 +50,20 @@
  
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="degat">Dégât :</label>
+                                <label for="degat">Dégât:<span class="required">*</span></label>
                                 <input type="text" name="degat" id="degat" required>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="causes">Causes :</label>
+                                <label for="causes">Causes:<span class="required">*</span></label>
                                 <textarea name="causes" id="causes" required></textarea>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="description">Description :</label>
+                                <label for="description">Description:<span class="required">*</span></label>
                                 <textarea name="description" id="description" required></textarea>
                             </div>
                         </div>

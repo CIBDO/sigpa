@@ -48,7 +48,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
-Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
 /* Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); */
 //MARQUES
@@ -67,7 +67,7 @@ Route::put('/update{marque}', [MarqueController::class, 'update'])->name('marque
 Route::delete('/marques/{marque}', [MarqueController::class, 'destroy'])->name('marques.destroy');
 // export
 Route::get('/export/pdf', [ExportController::class, 'exportPDF'])->name('export.pdf');
-Route::get('/export/excel', [ExportController::class, 'exportExcel'])->name('export.excel');
+Route::get('/export/excel', [ExportController::class, 'exportExcel'])->name('export.excel'); 
 // MODELES
 Route::get('/modeles', [ModeleController::class, 'list'])->name('modeles.list');
 Route::get('/formulaire', [ModeleController::class, 'formulaire'])->name('modeles.formulaire');
@@ -76,6 +76,10 @@ Route::get('/detail', [ModeleController::class, 'detail'])->name('modeles.detail
 Route::get('/edit/{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
 Route::put('/update/{modele}', [ModeleController::class, 'update'])->name('modeles.update');
 Route::delete('/modeles/{modele}', [ModeleController::class, 'destroy'])->name('modeles.destroy');
+Route::get('/modeles-export', [ModeleController::class, 'exportModeles'])->name('modeles.export');
+
+
+
 // SERVICES
 Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
 Route::get('/formulaire', [ServiceController::class, 'formulaire'])->name('services.formulaire');
@@ -153,12 +157,8 @@ Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('a
 Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
 Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
 Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');
-<<<<<<< HEAD
 
-//Incidents  
-=======
 //Incidents
->>>>>>> 454a4a7dc7ae8b5ad9e3339a56722d783dae4678
 Route::get('/incidents', [IncidentController::class, 'list'])->name('incidents.list');
 Route::get('incidents/formulaire', [IncidentController::class, 'formulaire'])->name('incidents.formulaire');
 Route::post('/incidents', [IncidentController::class, 'store'])->name('incidents.store');
@@ -178,8 +178,5 @@ Route::delete('/bons{bon}', [BonController::class, 'destroy'])->name('bons.destr
 Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRapport'])->name('rapport.vehicules');
 Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');
 
+//les exportations
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 454a4a7dc7ae8b5ad9e3339a56722d783dae4678

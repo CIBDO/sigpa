@@ -36,7 +36,7 @@ class MaintenanceController extends Controller
             'cout' => 'required|integer',
             'date_debut' => 'required|date',
             'date_fin' => 'required|date',           
-            'travaux' => 'required|text',
+            'travaux' => 'required|string',
             'statut' => 'required|string',
         ]);
 

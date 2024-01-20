@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Mission;
+use App\Models\Marque;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class RapportMissionsExport implements FromCollection
@@ -13,5 +14,6 @@ class RapportMissionsExport implements FromCollection
     public function collection()
     {
         return Mission::all();
+        return Marque::all();
     }
 }

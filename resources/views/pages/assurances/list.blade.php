@@ -111,8 +111,9 @@
                             <form action="{{ route('assurances.store') }}" method="post" id="ajouterPrestataireForm">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="id_vehicule" class="form-label">Véhicule:</label>
+                                    <label for="id_vehicule" class="form-label">Véhicule:<span class="required">*</span></label>
                                     <select class="form-control" name="id_vehicule" required>
+                                    <option selected disabled>Sélectionner le Véhicule</option>
                                         @foreach($vehicules as $vehicule)
                                             <option
                                                 value="{{ $vehicule->id_vehicule }}">{{ $vehicule->immatriculation }}</option>
@@ -120,12 +121,12 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nom_assurance" class="form-label">Assureur:</label>
+                                    <label for="nom_assurance" class="form-label">Assureur:<span class="required">*</span></label>
                                     <input type="text" class="form-control" name="nom_assurance" required>
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <label>Type Assurance</label>
+                                        <label>Type Assurance <span class="required">*</span></label>
                                         <select name="type_assurance" class="form-control controle select2">
                                             <option selected disabled>Sélectionner le type</option>
                                             <option value="Vignette">Vignette</option>
@@ -135,16 +136,16 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="date_debut" class="form-label">Date Début:</label>
+                                    <label for="date_debut" class="form-label">Date Début:<span class="required">*</span></label>
                                     <input type="date" class="form-control" name="date_debut" id="date_debut" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="date_fin" class="form-label">Date Fin:</label>
+                                    <label for="date_fin" class="form-label">Date Fin:<span class="required">*</span></label>
                                     <input type="date" class="form-control" name="date_fin" id="date_fin" required>
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <label>Statut</label>
+                                        <label>Statut <span class="required">*</span></label>
                                         <select name="statut" class="form-control controle select2">
                                             <option selected disabled>Sélectionner le statut</option>
                                             <option value="En Cours">En cours</option>

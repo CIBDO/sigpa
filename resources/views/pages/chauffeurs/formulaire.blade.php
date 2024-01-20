@@ -24,31 +24,31 @@
                      <div class="row"> 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Matricule</label>
+                                <label>Matricule <span class="required">*</span></label>
                                 <input type="text" name="matricule" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label>Nom <span class="required">*</span></label>
                                 <input type="text" name="nom" required>
                             </div>
                         </div>
                      <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Prénom</label>
+                                <label>Prénom <span class="required">*</span></label>
                                 <input type="text" name="prenom" required>
                             </div>
                         </div> 
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Date de Naissance</label>
+                                <label>Date de Naissance <span class="required">*</span></label>
                                 <input type="date" name="date_naiss" class="form-control" required>
                             </div>
                         </div> 
                          <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Sexe</label>
+                                <label>Sexe <span class="required">*</span></label>
                                 <select name="genre" class="form-control controle select2">
                                     <option selected disabled>Sélectionner le Sexe</option>
                                     <option value="Masculin">M</option>
@@ -59,25 +59,25 @@
                         </div>
                        <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Email <span class="required">*</span></label>
                                 <input type="text" name="email" required>
                             </div>
                         </div> 
                          <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Téléphone</label>
+                                <label>Téléphone <span class="required">*</span></label>
                                 <input type="text" name="telephone" required>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Numéro de Permis</label>
+                                <label>Numéro de Permis<span class="required">*</span></label>
                                 <input type="text" name="numero_permis" required>
                             </div>
                         </div> 
                          <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Catégorie de Permis</label>
+                                <label>Catégorie de Permis <span class="required">*</span></label>
                                 <select name="categorie_permis" class="form-control controle select2">
                                 <option selected disabled>Sélectionner la Catégorie</option>
                                 <option value="A">A1</option>
@@ -98,8 +98,9 @@
                        
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Choisir Service</label>
+                                <label>Choisir Service <span class="required">*</span></label>
                                 <select name="id_service" class="form-control controle select2" >
+                                <option selected disabled>Sélectionner le Service</option>
                                     @foreach($services as $service)
                                     <option value="{{ $service->id_service }}">{{ $service->nom_service }}</option>
                                     @endforeach

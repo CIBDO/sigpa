@@ -160,6 +160,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
        
         // App\Providers\BroadcastServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,

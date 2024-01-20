@@ -42,11 +42,11 @@
                                         <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                                     </a>
                                 </li>
-                                {{-- <li>
+                                 <li>
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                         <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                                     </a>
-                                </li> --}}
+                                </li> 
                                 <li>
                                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"
@@ -98,10 +98,10 @@
                                     <td>{{ $vehicule->etat_vehicule }}</td>
                                     <td>
                                         <!-- Ajoutez des liens d'action pour chaque véhicule -->
-                                        <a class="me-3"
+                                        {{-- <a class="me-3"
                                            href="{{route('vehicules.detail', ['vehicule' => $vehicule->id_vehicule])}}">
                                             <img src="{{asset('assets/img/icons/eye.svg')}}" alt="img">
-                                        </a>
+                                        </a> --}}
                                         <a class="me-3"
                                            href="{{ route('vehicules.edit', ['vehicule' => $vehicule->id_vehicule]) }}">
                                             <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
@@ -154,7 +154,10 @@
                             <label for="vidangeDate">Date</label>
                             <input type="date" class="form-control" id="vidangeDate" name="date" required>
                         </div>
-
+                        <div class="form-group">
+                            <label for="vidangeKilometrage">Kilomètrage</label>
+                            <input type="text" class="form-control" id="vidangeKilometrage" name="kilometrage_vidange" required>
+                        </div>
                         <div class="form-group">
                             <label for="vidangeDescription">Description</label>
                             <textarea class="form-control" id="vidangeDescription" name="description" rows="3" required></textarea>

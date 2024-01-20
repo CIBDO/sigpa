@@ -28,8 +28,9 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label for="id_vehicule" class="form-label">Véhicule:</label>
+                                    <label for="id_vehicule" class="form-label">Véhicule:<span class="required">*</span></label>
                                     <select class="form-control" name="id_vehicule" required>
+                                    <option selected disabled>Sélectionner le Véhicule</option>
                                         @foreach($vehicules as $vehicule)
                                             <option value="{{ $vehicule->id_vehicule }}">{{ $vehicule->immatriculation }}</option>
                                         @endforeach
@@ -37,22 +38,22 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="numero_bon" class="form-label">Numéro de Bon:</label>
+                                    <label for="numero_bon" class="form-label">Numéro de Bon:<span class="required">*</span></label>
                                     <input type="text" class="form-control" name="numero_bon" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="date_delivrance" class="form-label">Date de Délivrance:</label>
+                                    <label for="date_delivrance" class="form-label">Date de Délivrance:<span class="required">*</span></label>
                                     <input type="date" class="form-control" name="date_delivrance" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="quantite" class="form-label">Quantité:</label>
+                                    <label for="quantite" class="form-label">Quantité:<span class="required">*</span></label>
                                     <input type="text" class="form-control" name="quantite" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="valeur_espece" class="form-label">Valeur en Espèces:</label>
+                                    <label for="valeur_espece" class="form-label">Valeur en Espèces:<span class="required">*</span></label>
                                     <input type="text" class="form-control" name="valeur_espece" required>
                                 </div>
 

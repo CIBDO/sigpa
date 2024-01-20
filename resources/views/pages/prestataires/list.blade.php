@@ -24,7 +24,7 @@
             <table class="table datanew">
               <thead>
                 <tr>
-                  <th>Id</th>
+                  
                   <th>Nom du prestataire</th>
                   <th>Contact</th>
                   <th>Adresse</th>
@@ -34,7 +34,7 @@
               <tbody>
                 @foreach($prestataires as $prestataire)
                   <tr>
-                    <td>{{ $prestataire->id_prestataire }}</td>
+                    
                     <td>{{ $prestataire->nom_prestataire }}</td>
                     <td>{{ $prestataire->contact }}</td>
                     <td>{{ $prestataire->adresse }}</td>
@@ -66,15 +66,15 @@
               <form action="{{ route('prestataires.store') }}" method="post" id="ajouterPrestataireForm">
                 @csrf
                 <div class="mb-3">
-                  <label for="nom_prestataire" class="form-label">Nom du prestataire:</label>
+                  <label for="nom_prestataire" class="form-label">Nom du prestataire:<span class="required">*</span></label>
                   <input type="text" class="form-control" name="nom_prestataire" required>
                 </div>
                 <div class="mb-3">
-                  <label for="contact" class="form-label">Contact:</label>
+                  <label for="contact" class="form-label">Contact:<span class="required">*</span></label>
                   <input type="text" class="form-control" name="contact" required>
                 </div>
                 <div class="mb-3">
-                  <label for="adresse" class="form-label">Adresse:</label>
+                  <label for="adresse" class="form-label">Adresse:<span class="required">*</span></label>
                   <input type="text" class="form-control" name="adresse" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Ajouter</button>

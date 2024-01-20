@@ -28,7 +28,7 @@
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
             </form>
-            <p><a href="{{ route('register') }}">Inscrivez-vous ici</a>.</p>
+            
             @if(session('error'))
     <div class="alert alert-danger">{{ session('error') }}</div>
 @endif
@@ -47,6 +47,7 @@
                 <div class="social-icons">
                     <img src="{{asset('assets/img/logo.png')}}" style="width: 150px">
                 </div>
+                <p><a href="{{ route('register') }}">Inscrivez-vous ici</a>.</p>
             </div>
         </div>
         <div class="screen__background">

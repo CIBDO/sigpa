@@ -26,7 +26,7 @@
                                  @csrf
 
                                  <div class="mb-3">
-                                     <label for="nom_service" class="form-label">Nom du service:</label>
+                                     <label for="nom_service" class="form-label">Nom du service:<span class="required">*</span></label>
                                      <input type="text" class="form-control" name="nom_service" required>
                                      <label for="description" class="form-label">description:</label>
                                      <input type="text" class="form-control" name="description" >
@@ -52,9 +52,6 @@
                  });
 
              </script>
-             {{-- <a href="{{ route('marques.formulaire') }}" class="btn btn-added">
-             <img src="assets/img/icons/plus.svg" alt="img" class="me-1">Ajouter marque
-             </a> --}}
              
         </div> 
             <div class="card">
@@ -79,13 +76,13 @@
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
                     </li>
-                    {{-- <li>
+                     <li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> --}}
+                    </li> 
                     <li>
-                    {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
+                    
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
                             <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
                         </a>
@@ -103,7 +100,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
-                        <th>Numéro</th>
+                        
                         <th>Nom Service</th>
                         <th>Description</th>
                         <!-- Ajoutez d'autres colonnes au besoin -->
@@ -119,7 +116,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
-                        <td>{{$service->id_service}}</td>
+                        
                         <td>{{$service->nom_service}}</td>
                         <td>{{$service->description}}</td>
                         <!-- Ajoutez d'autres cellules de données au besoin -->

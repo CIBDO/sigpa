@@ -103,12 +103,12 @@
                     </div>
                     <div class="wordset">
                         <ul>
-                            <li>
+                            {{-- <li>
                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export PDF"
                                    href="{{ route('export.pdf') }}">
                                     <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                                 </a>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                     <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
@@ -116,11 +116,11 @@
                             </li> --}}
                             <li>
                                 {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
-                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"
+                                {{-- <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"
                                    ; return false;">
                                 <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                             <th>Immatriculation</th>
                             <th>Date d'Acquisition</th>
                             <th>État du Véhicule</th>
-                            <th class="text-right">Action</th>
+                            {{-- <th class="text-right">Action</th> --}}
                         </tr>
                         </thead>
                         <tbody>
@@ -163,7 +163,7 @@
                                 <td>{{ $vehicule->immatriculation }}</td>
                                 <td>{{ $vehicule->date_acquisition }}</td>
                                 <td>{{ $vehicule->etat_vehicule }}</td>
-                                <td>
+                                {{-- <td>
                                     <!-- Ajoutez des liens d'action pour chaque véhicule -->
                                     <a class="me-3"
                                        href="{{route('vehicules.detail', ['vehicule' => $vehicule->id_vehicule])}}">
@@ -187,7 +187,7 @@
                                     </form>
 
                                     <!-- Ajoutez d'autres actions si nécessaire -->
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                         </tbody>

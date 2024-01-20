@@ -28,33 +28,34 @@
 
                             <!-- Ajoutez tous les champs de la mission ici -->
                             <div class="mb-3">
-                                <label for="numero_mission" class="form-label">Numéro de Mission:</label>
+                                <label for="numero_mission" class="form-label">Numéro de Mission:<span class="required">*</span></label>
                                 <input type="text" class="form-control" name="numero_mission" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="objectif" class="form-label">Objectif:</label>
+                                <label for="objectif" class="form-label">Objectif:<span class="required">*</span></label>
                                 <input type="text" class="form-control" name="objectif" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="date_debut" class="form-label">Date de Début:</label>
+                                <label for="date_debut" class="form-label">Date de Début:<span class="required">*</span></label>
                                 <input type="date" class="form-control" name="date_debut" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="date_fin" class="form-label">Date de Fin:</label>
+                                <label for="date_fin" class="form-label">Date de Fin:<span class="required">*</span></label>
                                 <input type="date" class="form-control" name="date_fin" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="trajet" class="form-label">Trajet:</label>
+                                <label for="trajet" class="form-label">Trajet:<span class="required">*</span></label>
                                 <textarea class="form-control" name="trajet" required></textarea>
                             </div>
 
                             <div class="mb-3">
-                                <label for="id_vehicule" class="form-label">Véhicule:</label>
+                                <label for="id_vehicule" class="form-label">Véhicule:<span class="required">*</span></label>
                                 <select class="form-control" name="id_vehicule" required>
+                                <option selected disabled>Sélectionner le Véhicule</option>
                                     @foreach($véhicules as $vehicule)
                                     <option value="{{ $vehicule->id_vehicule }}">{{ $vehicule->immatriculation }}</option>
                                     @endforeach
@@ -136,11 +137,11 @@
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
                     </li>
-                    {{-- <li>
+                     <li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> --}}
+                    </li> 
                     <li>
                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">

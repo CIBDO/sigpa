@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Modele;
 use Illuminate\Http\Request;
+use App\Exports\ModelesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ModeleController extends Controller
 {
@@ -61,4 +64,8 @@ class ModeleController extends Controller
         return redirect()->route('modeles.list')
             ->with('success', 'Modèle supprimée avec succès');
     }
+    public function exportModeles()
+        {
+            return Excel::download(new ModelesExport, 'modeles.xlsx');
+        }
 }

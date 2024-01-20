@@ -53,7 +53,7 @@
                         <li class="submenu">
                             <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/maintenance.svg')}}" alt="img"><span>Maintenances</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="{{route('categories.list')}}">Type Maintenance</a></li>
+                                {{-- <li><a href="{{route('categories.list')}}">Type Maintenance</a></li> --}}
                                  <li><a href="{{route('prestataires.list')}}">Voir Prestataires </a></li>
                                 <li><a href="{{route('maintenances.formulaire')}}">Planifier</a></li>
                                 <li><a href="{{route('maintenances.list')}}">Détails Maintenance</a></li>
@@ -81,7 +81,7 @@
                             <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/incident.svg')}}" alt="img"><span>Incidents</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="{{route('incidents.list')}}"> Voir les incidents</a></li>
-                                <li><a href="{{route('incidents.formulaire')}}">Inserer </a></li>
+                                <li><a href="{{route('incidents.formulaire')}}">Ajouter</a></li>
                                 {{-- <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
                                 <li><a href="createpurchasereturn.html">Add Purchase Return </a></li> --}}
                             </ul>

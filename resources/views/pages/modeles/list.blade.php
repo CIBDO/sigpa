@@ -27,7 +27,7 @@
                                  @csrf
 
                                  <div class="mb-3">
-                                     <label for="nom_modele" class="form-label">Nom du modèle:</label>
+                                     <label for="nom_modele" class="form-label">Nom du modèle:<span class="required">*</span></label>
                                      <input type="text" class="form-control" name="nom_modele" required>
                                  </div>
 
@@ -51,10 +51,6 @@
                  });
 
              </script>
-             {{-- <a href="{{ route('marques.formulaire') }}" class="btn btn-added">
-             <img src="assets/img/icons/plus.svg" alt="img" class="me-1">Ajouter marque
-             </a> --}}
-
          </div>
          <div class="card">
     <div class="card-body">
@@ -74,15 +70,15 @@
             <div class="wordset">
                 <ul>
                     <li>
-                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export PDF" href="{{ route('export.pdf') }}">
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export PDF" href="">
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
                     </li>
-                    {{-- <li>
-                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="modeles.export">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> --}}
+                    </li> 
                     <li>
                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
@@ -105,7 +101,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
-                        <th>Numéro</th>
+                        
                         <th>Nom du modèle </th>
                         <!-- Ajoutez d'autres colonnes au besoin -->
                         <th class="text-rigth">Action</th>
@@ -120,7 +116,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
-                        <td>{{$modele->id_modele}}</td>
+                        
                         <td>{{$modele->nom_modele}}</td>
                         <!-- Ajoutez d'autres cellules de données au besoin -->
                         <td>

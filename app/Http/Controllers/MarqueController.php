@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Marque;
 use HepplerDotNet\FlashToastr\Flash;
 use Brick\Math\BigInteger;
+use App\Exports\ExcelExportTrait;
+use App\Exports\MarquesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MarqueController extends Controller
 {
@@ -64,4 +67,10 @@ class MarqueController extends Controller
         return redirect()->route('marques.list')
             ->with('success', 'Marque supprimée avec succès');
     }
+   
+        public function export()
+        {
+            return Excel::download(new MarquesExport, 'marques.xlsx');
+        }
+    
 }

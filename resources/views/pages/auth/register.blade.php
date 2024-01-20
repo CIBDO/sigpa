@@ -7,7 +7,7 @@
     <title>Inscription</title>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
-    <link rel="stylesheet" href="{{asset('register/style.css') }}">
+    <link rel="stylesheet" href="{{asset('login/style.css') }}">
 </head>
 <body>
     <div class="container">

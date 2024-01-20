@@ -27,7 +27,7 @@
                                  @csrf
 
                                  <div class="mb-3">
-                                     <label for="nom_marque" class="form-label">Nom de la Marque:</label>
+                                     <label for="nom_marque" class="form-label">Nom de la Marque:<span class="required">*</span></label>
                                      <input type="text" class="form-control" name="nom_marque" required>
                                  </div>
 
@@ -51,10 +51,6 @@
                  });
 
              </script>
-             {{-- <a href="{{ route('marques.formulaire') }}" class="btn btn-added">
-             <img src="assets/img/icons/plus.svg" alt="img" class="me-1">Ajouter marque
-             </a> --}}
-
          </div>
          <div class="card">
     <div class="card-body">
@@ -78,11 +74,11 @@
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
                     </li>
-                    {{-- <li>
+                     <li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> --}}
+                    </li> 
                     <li>
                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
@@ -105,7 +101,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
-                        <th>Numéro</th>
+                        {{-- <th>Numéro</th> --}}
                         <th>Nom de la Marque</th>
                         <!-- Ajoutez d'autres colonnes au besoin -->
                         <th class="text-rigth">Action</th>
@@ -120,7 +116,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
-                        <td>{{$marque->id_marque}}</td>
+                        {{-- <td>{{$marque->id_marque}}</td> --}}
                         <td>{{$marque->nom_marque}}</td>
                         <!-- Ajoutez d'autres cellules de données au besoin -->
                         <td>

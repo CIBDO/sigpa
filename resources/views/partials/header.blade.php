@@ -129,13 +129,12 @@
                                 <span class="user-img"><img src="{{asset('assets/img/profiles/avator1.png')}}" alt="">
                                     <span class="status online"></span></span>
                                 <div class="profilesets">
-                                    <h6>Djibril KEÏTA</h6>
-                                    <h5>Admin</h5>
+                                    <span>{{ auth()->user()->name }}</span>
                                 </div>
                             </div>
                             <hr class="m-0">
-                            <a class="dropdown-item" href="profile.html"> <i class="me-2" data-feather="user"></i> My Profile</a>
-                            <a class="dropdown-item" href="generalsettings.html"><i class="me-2" data-feather="settings"></i>Settings</a>
+                            <a class="dropdown-item" href=""> <i class="me-2" data-feather="user"></i> My Profile</a>
+                            <a class="dropdown-item" href=""><i class="me-2" data-feather="settings"></i>Settings</a>
                             <hr class="m-0">
                             <a class="dropdown-item logout pb-0" href="{{route('logout')}}"><img src="{{asset('assets/img/icons/log-out.svg')}}" class="me-2" alt="img">Déconnexion</a>
                         </div>
@@ -147,8 +146,8 @@
             <div class="dropdown mobile-user-menu">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                    <a class="dropdown-item" href="generalsettings.html">Settings</a>
+                    <a class="dropdown-item" href="">My Profile</a>
+                    <a class="dropdown-item" href="">Settings</a>
                     <a class="dropdown-item" href="{{route('logout')}}">Déconnexion</a>
                 </div>
             </div>

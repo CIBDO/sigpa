@@ -29,8 +29,9 @@
 
                                     <!-- Ajoutez tous les champs de l'affectation ici -->
                                     <div class="mb-3">
-                                <label for="id_service" class="form-label">Service:</label>
+                                <label for="id_service" class="form-label">Service: <span class="required">*</span></label>
                                 <select class="form-control" name="id_service" required>
+                                <option selected disabled>Sélectionner le service</option>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id_service }}">{{ $service->nom_service }}</option>
                                     @endforeach
@@ -38,8 +39,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="id_modele" class="form-label">Modèle:</label>
+                                <label for="id_modele" class="form-label">Modèle:<span class="required">*</span></label>
                                 <select class="form-control" name="id_modele" required>
+                                <option selected disabled>Sélectionner le modèle</option>
                                     @foreach($modeles as $modele)
                                         <option value="{{ $modele->id_modele }}">{{ $modele->nom_modele }}</option>
                                     @endforeach
@@ -47,8 +49,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="id_marque" class="form-label">Marque:</label>
+                                <label for="id_marque" class="form-label">Marque:<span class="required">*</span></label>
                                 <select class="form-control" name="id_marque" required>
+                                <option selected disabled>Sélectionner la marque  </option>
                                     @foreach($marques as $marque)
                                         <option value="{{ $marque->id_marque }}">{{ $marque->nom_marque }}</option>
                                     @endforeach
@@ -56,8 +59,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="id_vehicule" class="form-label">Véhicule:</label>
+                                <label for="id_vehicule" class="form-label">Véhicule:<span class="required">*</span></label>
                                 <select class="form-control" name="id_vehicule" required>
+                                <option selected disabled>Sélectionner le Véhicule</option>
                                     @foreach($vehicules as $vehicule)
                                         <option value="{{ $vehicule->id_vehicule }}">{{ $vehicule->immatriculation }}</option>
                                     @endforeach
@@ -65,12 +69,12 @@
                             </div>
 
                                     <div class="mb-3">
-                                        <label for="date_affectation" class="form-label">Date d'affectation:</label>
+                                        <label for="date_affectation" class="form-label">Date d'affectation:<span class="required">*</span></label>
                                         <input type="date" class="form-control" name="date_affectation" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label>Statut</label>
+                                        <label>Statut <span class="required">*</span></label>
                                 <select name="statut" class="form-control controle select2">
                                     <option selected disabled>Sélectionner le statut</option>
                                     <option value="Neuf">Neuf</option>
@@ -122,11 +126,11 @@
                                         <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                                     </a>
                                 </li>
-                                {{-- <li>
+                                <li>
                           <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                 <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                                 </a>
-                                </li> --}}
+                                </li> 
                                 <li>
                                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()" ; return false;">

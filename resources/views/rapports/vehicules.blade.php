@@ -15,13 +15,16 @@
                          <li class="nav-item" role="presentation">
                              <button class="nav-link active" id="purchase-tab" data-bs-toggle="tab" data-bs-target="#purchase" type="button" role="tab" aria-controls="purchase" aria-selected="true">Véhicules</button>
                          </li>
-                         {{-- <li class="nav-item" role="presentation">
+                         <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="payment-tab" data-bs-toggle="tab" href="{{ route('rapport.maintenances') }}" role="tab" aria-controls="payment" aria-selected="false">Maintenances</a>
                         </li>
 
                          <li class="nav-item" role="presentation">
                              <button class="nav-link" id="return-tab" data-bs-toggle="tab" data-bs-target="#return" type="button" role="tab" aria-controls="return" aria-selected="false">Missions</button>
-                         </li> --}}
+                         </li> 
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link" id="return-tab" data-bs-toggle="tab" data-bs-target="#return" type="button" role="tab" aria-controls="return" aria-selected="false">Assurances</button>
+                         </li> 
                      </ul>
                 <div class="table-top">
 
