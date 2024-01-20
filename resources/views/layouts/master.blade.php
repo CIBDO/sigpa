@@ -31,6 +31,20 @@
             position: relative;
             top: -10px;
         }
+        .sidebar .sidebar-menu>ul>li.active a {
+            background: #325194;
+            border-radius: 5px;
+        }
+        .sidebar .sidebar-menu>ul>li>a {
+            padding: 10px 15px;
+            position: relative;
+            color: #325194;
+        }
+        .sidebar .sidebar-menu>ul>li>a:hover {
+            background: #325194;
+            color: #fff;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
