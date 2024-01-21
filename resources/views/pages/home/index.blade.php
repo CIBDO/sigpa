@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                    <div class="dash-count das8">
+                    <div class="dash-count das2">
                         <div class="dash-counts">
                             <h4>En Maintenance</h4>
                             <ul>
