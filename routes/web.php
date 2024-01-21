@@ -48,7 +48,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
 /* Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); */
 //MARQUES

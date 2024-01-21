@@ -37,7 +37,7 @@ class MissionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'numero_mission' => 'required|integer',
+            'numero_mission' => 'required|string',
             'objectif' => 'required|string',
             'date_debut' => 'required|date',
             'date_fin' => 'required|date',
@@ -75,7 +75,7 @@ class MissionController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'numero_mission' => 'required|integer',
+            'numero_mission' => 'required|string',
             'objectif' => 'required|string',
             'date_debut' => 'required|date',
             'date_fin' => 'required|date',

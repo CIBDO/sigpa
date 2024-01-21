@@ -38,13 +38,12 @@
         </li>
         <li class="nav-item dropdown has-arrow flag-nav">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
-                <img src="{{asset('assets/img/flags/us1.png')}}" alt="" height="20">
+                <img src="{{asset('assets/img/flags/us.png')}}" alt="" height="20">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:void(0);" class="dropdown-item">
                     <img src="{{asset('assets/img/flags/us.png')}}" alt="" height="16"> Mali
                 </a>
-
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -118,13 +117,13 @@
         </li>
         <li class="nav-item dropdown has-arrow main-drop">
             <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
-                        <span class="user-img"><img src="{{asset('assets/img/profiles/avator1.jpg')}}" alt="">
+                        <span class="user-img"><img src="{{asset('assets/img/profiles/avatar1.jpg')}}" alt="">
                             <span class="status online"></span></span>
             </a>
             <div class="dropdown-menu menu-drop-user">
                 <div class="profilename">
                     <div class="profileset">
-                                <span class="user-img"><img src="{{asset('assets/img/profiles/avator1.png')}}" alt="">
+                                <span class="user-img"><img src="{{asset('assets/img/profiles/avatar1.jpg')}}" alt="">
                                     <span class="status online"></span></span>
                                 <div class="profilesets">
                                     <span>{{ auth()->user()->name }}</span>
