@@ -181,7 +181,7 @@
 
                          <div class="col-lg-12">
                              <button type="submit" class="btn btn-submit me-2">Enregistrer le Véhicule</button>
-                             <a href="javascript:void(0);" class="btn btn-cancel">Annuler</a>
+                             <a href="{{ route('vehicules.list') }}" class="btn btn-cancel">Annuler</a>
                          </div>
                      </div>
                  </form>
@@ -191,3 +191,4 @@
  </div>
  @endsection
 
+                        

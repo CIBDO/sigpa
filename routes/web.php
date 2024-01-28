@@ -50,7 +50,7 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 
 Route::get('/', [DashboardController::class, 'index'])->name('home')->middleware('auth');
 
-/* Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); */
+
 //MARQUES
 Route::get('/marques', [MarqueController::class, 'list'])->name('marques.list');
 // Afficher le formulaire de création d'une nouvelle marque
@@ -66,8 +66,7 @@ Route::put('/update{marque}', [MarqueController::class, 'update'])->name('marque
 // Supprimer une marque
 Route::delete('/marques/{marque}', [MarqueController::class, 'destroy'])->name('marques.destroy');
 // export
-Route::get('/export/pdf', [ExportController::class, 'exportPDF'])->name('export.pdf');
-Route::get('/export/excel', [ExportController::class, 'exportExcel'])->name('export.excel'); 
+
 // MODELES
 Route::get('/modeles', [ModeleController::class, 'list'])->name('modeles.list');
 Route::get('/formulaire', [ModeleController::class, 'formulaire'])->name('modeles.formulaire');
@@ -76,7 +75,9 @@ Route::get('/detail', [ModeleController::class, 'detail'])->name('modeles.detail
 Route::get('/edit/{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
 Route::put('/update/{modele}', [ModeleController::class, 'update'])->name('modeles.update');
 Route::delete('/modeles/{modele}', [ModeleController::class, 'destroy'])->name('modeles.destroy');
-Route::get('/modeles-export', [ModeleController::class, 'exportModeles'])->name('modeles.export');
+
+Route::get('/export/pdf', [ModeleController::class, 'exportPDF'])->name('export.pdf');
+Route::get('/export/excel', [ModeleController::class, 'ModelesExport'])->name('export.excel');
 
 
 
@@ -85,7 +86,7 @@ Route::get('/services', [ServiceController::class, 'list'])->name('services.list
 Route::get('/formulaire', [ServiceController::class, 'formulaire'])->name('services.formulaire');
 Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
 Route::get('/detail', [ServiceController::class, 'detail'])->name('services.detail');
-Route::get('/edit', [ServiceController::class, 'edit'])->name('services.edit');
+Route::get('/services/edit/{service}', [ServiceController::class, 'edit'])->name('services.edit');
 Route::put('/update', [ServiceController::class, 'update'])->name('services.update');
 Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
 // PRESTATAIRES
@@ -111,7 +112,7 @@ Route::get('/affectations', [AffectationController::class, 'list'])->name('affec
 Route::get('/formulaire', [AffectationController::class, 'create'])->name('affectations.formulaire');
 Route::post('/affectations', [AffectationController::class, 'store'])->name('affectations.store');
 Route::get('/detail', [AffectationController::class, 'detail'])->name('affectations.detail');
-Route::get('affectations/edit/{affectation}', [AffectationController::class, 'edit'])->name('affectations.edit');
+Route::get('/affectations/edit/{affectation}', [AffectationController::class, 'edit'])->name('affectations.edit');
 Route::put('affectations/update/{affectation}', [AffectationController::class, 'update'])->name('affectations.update');
 Route::delete('/affectations/{affectation}', [AffectationController::class, 'destroy'])->name('affectations.destroy');
 

@@ -1,15 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\GenericExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Modele;
 use Illuminate\Http\Request;
 use App\Exports\ModelesExport;
-use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Exports\PdfExport;
+
+
 
 
 class ModeleController extends Controller
 {
+  
+
     public function list()
     {
         $modeles = Modele::all();
@@ -64,8 +70,19 @@ class ModeleController extends Controller
         return redirect()->route('modeles.list')
             ->with('success', 'Modèle supprimée avec succès');
     }
-    public function exportModeles()
-        {
-            return Excel::download(new ModelesExport, 'modeles.xlsx');
-        }
+     
+    public function ModelesExport()
+    {
+        return Excel::download(new ModelesExport, 'modeles.xlsx');
+    }
+    /* public function exportPDF()
+    {
+        $data = Modele::all()->toArray();
+
+        // Utiliser DomPDF pour générer le PDF
+        $pdf = PDF::loadView('modeles_pdf', ['data' => $data]);
+
+        // Télécharger le PDF
+        return $pdf->download('export.pdf');
+    } */
 }

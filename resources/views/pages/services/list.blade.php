@@ -28,7 +28,7 @@
                                  <div class="mb-3">
                                      <label for="nom_service" class="form-label">Nom du service:<span class="required">*</span></label>
                                      <input type="text" class="form-control" name="nom_service" required>
-                                     <label for="description" class="form-label">description:</label>
+                                     <label for="description" class="form-label">description:<span class="required">*</span></label>
                                      <input type="text" class="form-control" name="description" >
                                  </div>
 
@@ -46,6 +46,15 @@
                          var nomService = $("input[name='nom_service']").val();
                          if (!nomService.trim()) {
                              alert("Veuillez entrer le nom du service.");
+                             event.preventDefault();
+                         }
+                     });
+                 });
+                 document.addEventListener("DOMContentLoaded", function() {
+                     $("#ajouterMarqueForm").submit(function(event) {
+                         var nomService = $("input[name='description']").val();
+                         if (!nomService.trim()) {
+                             alert("Veuillez entrer la description du service.");
                              event.preventDefault();
                          }
                      });

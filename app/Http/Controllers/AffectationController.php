@@ -17,7 +17,7 @@ class AffectationController extends Controller
         public function list()
         {
             
-            $affectations = Affectation::with(['service', 'modele', 'marque', 'vehicule'])->get();
+    $affectations = Affectation::with(['service', 'modele', 'marque', 'vehicule'])->get();
     $services = Service::all(); // Remplacez cela par votre logique pour récupérer les missions
     $modeles = Modele::all(); // Remplacez cela par votre logique pour récupérer les véhicules
     $marques = Marque::all(); // Remplacez cela par votre logique pour récupérer les missions

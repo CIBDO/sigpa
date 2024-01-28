@@ -40,6 +40,7 @@ class ServiceController extends Controller
 
     public function edit(Service $service)
     {
+        
         return view('pages.services.edit', compact('service'));
     }
 
@@ -50,13 +51,13 @@ class ServiceController extends Controller
             'description'=> 'nullable|string',  
         ]);
     
-        // Utiliser la méthode fill pour définir explicitement le champ à mettre à jour
-        $service->fill(['nom_service' => $request->input('nom_service')]);
-        $service->fill(['description' => $request->input('description')]);
+      
+         $service->fill(['nom_service' => $request->input('nom_service')]);
+        $service->fill(['description' => $request->input('description')]); 
         $service->save();
     
         return redirect()->route('services.list')
-            ->with('success', 'service modifiée avec succès');
+            ->with('success', 'service modifié avec succès');
     }
  
     public function destroy(Service $service)

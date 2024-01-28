@@ -79,7 +79,7 @@
                                     <option selected disabled>Sélectionner le statut</option>
                                     <option value="Neuf">Neuf</option>
                                     <option value="Bon">Bon</option>
-                                    <option value="pasbon">Pas Bon</option>
+                                    <option value="Pas Bon">Pas Bon</option>
                                     <!-- Ajoutez d'autres options selon vos besoins -->
                                 </select>
                                     </div>
@@ -143,7 +143,7 @@
 
                     </div>
               
-
+                <div class="affectations-container">
                    <div class="table-responsive">
                         <table class="table datanew">
                             <thead>
@@ -184,9 +184,14 @@
                                         {{-- <a class="me-3" href="{{ route('affectations.detail', ['affectation' => $affectation->id_affectation]) }}">
                                             <img src="{{ asset('assets/img/icons/eye.svg') }}" alt="img">
                                         </a> --}}
-                                        <a class="me-3" href="{{route('affectations.edit', ['affectation' => $affectation->id_affectation]) }}">
+                                       
+                                         <button type="button" class="btn btn-primary edit-affectation-btn" data-id="{{ $affectation->id_affectation }}">
+                                            <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="Modifier">
+                                        </button>
+                                        
+                                       {{--  <a class="me-3" href="{{route('affectations.edit', ['affectation' => $affectation->id_affectation]) }}">
                                             <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
-                                        </a>
+                                        </a> --}}
                                         <a href="{{ route('affectations.destroy', ['affectation' => $affectation->id_affectation]) }}" class="" onclick="event.preventDefault(); if(confirm('Êtes-vous sûr de vouloir supprimer cette affectation?'))
                                             document.getElementById('delete-affectation-form-{{$affectation->id_affectation}}').submit();">
                                             <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="img">
@@ -202,8 +207,22 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    </div>
+                </div>     
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        // Utilisation de la délégation d'événements
+        $(".affectations-container").on("click", ".edit-affectation-btn", function () {
+            // Récupérer l'ID de l'affectation à éditer depuis l'attribut data-id
+            var affectationId = $(this).data("id");
+
+            // Rediriger vers la page d'édition avec l'ID de l'affectation
+            window.location.href = "/affectations/edit/" + affectationId;
+        });
+    });
+</script>
 @endsection

@@ -163,7 +163,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
        
         // App\Providers\BroadcastServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+       
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
@@ -185,6 +185,7 @@ return [
             // ...
             'Excel' => Maatwebsite\Excel\Facades\Excel::class,
             'Flash' => HepplerDotNet\FlashToastr\Flash::class,
+            'PDF' => Barryvdh\DomPDF\Facade::class,
             
         ],
         

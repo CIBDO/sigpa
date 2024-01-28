@@ -68,7 +68,7 @@ class MarqueController extends Controller
             ->with('success', 'Marque supprimée avec succès');
     }
    
-        public function export()
+        public function MarquesExport()
         {
             return Excel::download(new MarquesExport, 'marques.xlsx');
         }

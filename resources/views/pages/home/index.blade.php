@@ -38,7 +38,7 @@
                             </ul>
                         </div>
                         <div class="dash-imgs">
-                            <i data-feather="users"></i>
+                            <i data-feather="user"></i>
                         </div>
                     </div>
                 </div>

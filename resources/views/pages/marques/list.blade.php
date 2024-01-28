@@ -80,7 +80,7 @@
                         </a>
                     </li> 
                     <li>
-                    {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
+                   
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
                             <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
                         </a>
@@ -93,7 +93,7 @@
 
         <div class="table-responsive">
             <table class="table datanew">
-                <thead>
+                <thead >
                     <tr>
                         <th>
                             <label class="checkboxs">
