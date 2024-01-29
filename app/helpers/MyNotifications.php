@@ -93,4 +93,15 @@ class MyNotifications
         return $vehicle !== false;
     }
 
+    public static function getChangeOilInfo($id)
+    {
+        $vehicles = MyNotifications::getVehiclesNeedingOilChange();
+
+        $filteredVehicles = array_filter($vehicles, function($vehicle) use ($id) {
+            return $vehicle['id'] == $id;
+        });
+
+        return $filteredVehicles ? reset($filteredVehicles) : null;
+    }
+
 }

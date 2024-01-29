@@ -75,6 +75,7 @@
                                 <th>Immatriculation</th>
                                 <th>Date d'Acquisition</th>
                                 <th>État du Véhicule</th>
+                                <th>Kilométrage</th>
                                 <th class="text-right">Action</th>
                             </tr>
                             </thead>
@@ -97,8 +98,15 @@
                                     <td>{{ $vehicule->date_acquisition }}</td>
                                     <td>
                                         {{ $vehicule->etat_vehicule }}
+
+                                    </td>
+                                    <td>
                                         @if(\App\helpers\MyNotifications::checkChangeOil($vehicule->id_vehicule))
-                                            <span class=" alert0n badge rounded-pill bg-danger">!</span>
+                                            @php
+                                                $vehiculeInfo = \App\helpers\MyNotifications::getChangeOilInfo($vehicule->id_vehicule)
+                                            @endphp
+                                           {{$vehiculeInfo['max_kilometrage']}}
+                                            <span class=" alert0n badge rounded-pill bg-danger">{{$vehiculeInfo['parcouru']}}</span>
                                         @endif
                                     </td>
                                     <td>
