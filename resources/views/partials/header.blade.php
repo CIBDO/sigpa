@@ -62,7 +62,7 @@
                     <ul class="notification-list">
                         @foreach(\App\helpers\MyNotifications::getVehiclesNeedingOilChange() as $vehicle)
                             <li class="notification-message">
-                                <a href="#">
+                                <a href="{{route('vehicules.list')}}">
                                     <div class="media d-flex">
                                             <span class="avatar flex-shrink-0">
                                                 <img alt="" src="{{asset('assets/img/service-automobile.png')}}">
