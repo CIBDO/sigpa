@@ -116,6 +116,7 @@ public function store(Request $request)
             $vidange = new Vidange();
             $vidange->id_vehicule = $request->vehiculeId;
             $vidange->date = $request->date;
+            $vidange->kilometrage_vidange = $request->kilometrage_vidange;
             $vidange->save();
 
             Flash::success('Confirmation','Vidange confirmée');

@@ -46,7 +46,7 @@
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                         <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                                     </a>
-                                </li> 
+                                </li>
                                 <li>
                                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"
@@ -95,7 +95,12 @@
                                     <td>{{ $vehicule->energie }}</td>
                                     <td>{{ $vehicule->immatriculation }}</td>
                                     <td>{{ $vehicule->date_acquisition }}</td>
-                                    <td>{{ $vehicule->etat_vehicule }}</td>
+                                    <td>
+                                        {{ $vehicule->etat_vehicule }}
+                                        @if(\App\helpers\MyNotifications::checkChangeOil($vehicule->id_vehicule))
+                                            <span class=" alert0n badge rounded-pill bg-danger">!</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <!-- Ajoutez des liens d'action pour chaque véhicule -->
                                         {{-- <a class="me-3"
