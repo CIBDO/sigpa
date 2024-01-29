@@ -35,6 +35,7 @@
         .alert0n{
             position: relative;
             top: -10px;
+            color: white;
         }
         .sidebar .sidebar-menu>ul>li.active a {
             background: #325194;
@@ -51,7 +52,7 @@
             border-radius: 5px;
         }
     </style>
-    
+
 </head>
 
 <body>
