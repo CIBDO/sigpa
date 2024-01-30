@@ -37,16 +37,18 @@ class MyNotifications
             ->get()->keyBy('id_vehicule');
 
         $vehiclesNeedingOilChange = [];
-
+//dd($mostRecentKilometragePerVehicle,$mostRecentOilChangeKilometragePerVehicle);
         foreach ($mostRecentKilometragePerVehicle as $vehicleId => $vehicleData) {
             $lastOilChangeKilometrage = $mostRecentOilChangeKilometragePerVehicle[$vehicleId]->max_kilometrage_vidange ?? 0;
 
-            if ($vehicleData->max_kilometrage - $lastOilChangeKilometrage > $maxKilometrageForOilChange) {
+
+            if ($vehicleData->max_kilometrage - $lastOilChangeKilometrage >= $maxKilometrageForOilChange) {
                 $vehicle = Vehicule::find($vehicleId);
                 $vehiclesNeedingOilChange[] = [
                     'id' => $vehicleId,
                     'immatriculation' => $vehicle->immatriculation,
                     'max_kilometrage' => $vehicleData->max_kilometrage,
+                    'parcouru'=>$vehicleData->max_kilometrage - $lastOilChangeKilometrage
                 ];
             }
         }
@@ -82,6 +84,24 @@ class MyNotifications
         }
 
         return Assurance::where('date_fin', '<=', $dateThreshold)->get();
+    }
+
+    public static function checkChangeOil($id)
+    {
+        $vehicles = MyNotifications::getVehiclesNeedingOilChange();
+        $vehicle = array_search($id, array_column($vehicles, 'id'));
+        return $vehicle !== false;
+    }
+
+    public static function getChangeOilInfo($id)
+    {
+        $vehicles = MyNotifications::getVehiclesNeedingOilChange();
+
+        $filteredVehicles = array_filter($vehicles, function($vehicle) use ($id) {
+            return $vehicle['id'] == $id;
+        });
+
+        return $filteredVehicles ? reset($filteredVehicles) : null;
     }
 
 }

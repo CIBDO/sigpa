@@ -46,7 +46,7 @@
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                         <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                                     </a>
-                                </li> 
+                                </li>
                                 <li>
                                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"
@@ -75,6 +75,7 @@
                                 <th>Immatriculation</th>
                                 <th>Date d'Acquisition</th>
                                 <th>État du Véhicule</th>
+                                <th>Kilométrage</th>
                                 <th class="text-right">Action</th>
                             </tr>
                             </thead>
@@ -95,7 +96,19 @@
                                     <td>{{ $vehicule->energie }}</td>
                                     <td>{{ $vehicule->immatriculation }}</td>
                                     <td>{{ $vehicule->date_acquisition }}</td>
-                                    <td>{{ $vehicule->etat_vehicule }}</td>
+                                    <td>
+                                        {{ $vehicule->etat_vehicule }}
+
+                                    </td>
+                                    <td>
+                                        @if(\App\helpers\MyNotifications::checkChangeOil($vehicule->id_vehicule))
+                                            @php
+                                                $vehiculeInfo = \App\helpers\MyNotifications::getChangeOilInfo($vehicule->id_vehicule)
+                                            @endphp
+                                           {{$vehiculeInfo['max_kilometrage']}}
+                                            <span class=" alert0n badge rounded-pill bg-danger">{{$vehiculeInfo['parcouru']}}</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <!-- Ajoutez des liens d'action pour chaque véhicule -->
                                         {{-- <a class="me-3"

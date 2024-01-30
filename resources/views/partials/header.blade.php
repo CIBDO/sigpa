@@ -60,15 +60,17 @@
                 </div>
                 <div class="noti-content">
                     <ul class="notification-list">
-                        @foreach(\App\helpers\MyNotifications::getVehiclesNeedingOilChange() as $vehicles)
+                        @foreach(\App\helpers\MyNotifications::getVehiclesNeedingOilChange() as $vehicle)
                             <li class="notification-message">
-                                <a href="#">
+                                <a href="{{route('vehicules.list')}}">
                                     <div class="media d-flex">
                                             <span class="avatar flex-shrink-0">
                                                 <img alt="" src="{{asset('assets/img/service-automobile.png')}}">
                                             </span>
                                         <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Le vehicule {{$vehicles['immatriculation']}} a besoin de vidange</span>
+                                            <p class="noti-details">
+                                                <span class="noti-title">Le vehicule {{$vehicle['immatriculation']}} a besoin de vidange</span><br>
+                                                <strong style="color: red">{{$vehicle['parcouru']}} Km parcouru</strong>
                                             </p>
                                             {{--                                                    <p class="noti-time"><span class="notification-time">4 mins ago</span></p>--}}
                                         </div>

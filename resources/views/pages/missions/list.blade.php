@@ -141,7 +141,7 @@
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
-                    </li> 
+                    </li>
                     <li>
                     {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()"; return false;">
@@ -168,7 +168,7 @@
                         <th>Date de Début</th>
                         <th>Date de Fin</th>
                         <th>Véhicule</th>
-                        <th>Kilométrage</th>
+                        <th>Kilométrage sur le compteur</th>
                         {{-- <th>Trajet</th>
                         <th>Véhicule</th> --}}
                         <!-- Ajoutez d'autres colonnes au besoin -->
