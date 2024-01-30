@@ -66,6 +66,8 @@ Route::put('/update{marque}', [MarqueController::class, 'update'])->name('marque
 // Supprimer une marque
 Route::delete('/marques/{marque}', [MarqueController::class, 'destroy'])->name('marques.destroy');
 // export
+Route::get('/export/pdf', [MarqueController::class, 'exportPDF'])->name('export.pdf');
+Route::get('/export/excel', [MarqueController::class, 'MarquesExport'])->name('export.excel');
 
 // MODELES
 Route::get('/modeles', [ModeleController::class, 'list'])->name('modeles.list');
