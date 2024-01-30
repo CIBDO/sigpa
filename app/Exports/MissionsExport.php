@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\Models\Modele;
+use App\Models\Mission;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ModelesExport implements FromCollection
+class MissionsExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Modele::all();
+        return Mission::all();
     }
 }

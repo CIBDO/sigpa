@@ -3,11 +3,6 @@
 @section('content')
   <div class="page-wrapper">
     <div class="content">
-    @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
       <div class="page-header">
         <div class="page-title">
           <h4>Liste des Prestataires</h4>

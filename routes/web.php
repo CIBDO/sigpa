@@ -66,8 +66,8 @@ Route::put('/update{marque}', [MarqueController::class, 'update'])->name('marque
 // Supprimer une marque
 Route::delete('/marques/{marque}', [MarqueController::class, 'destroy'])->name('marques.destroy');
 // export
-Route::get('/export/pdf', [MarqueController::class, 'exportPDF'])->name('export.pdf');
-Route::get('/export/excel', [MarqueController::class, 'MarquesExport'])->name('export.excel');
+Route::get('marques/export/', [MarqueController::class, 'export'])->name('export.excel');
+
 
 // MODELES
 Route::get('/modeles', [ModeleController::class, 'list'])->name('modeles.list');
@@ -77,11 +77,7 @@ Route::get('/detail', [ModeleController::class, 'detail'])->name('modeles.detail
 Route::get('/edit/{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
 Route::put('/update/{modele}', [ModeleController::class, 'update'])->name('modeles.update');
 Route::delete('/modeles/{modele}', [ModeleController::class, 'destroy'])->name('modeles.destroy');
-
-Route::get('/export/pdf', [ModeleController::class, 'exportPDF'])->name('export.pdf');
-Route::get('/export/excel', [ModeleController::class, 'ModelesExport'])->name('export.excel');
-
-
+Route::get('modeles/export/', [ModeleController::class, 'export'])->name('export.excel');
 
 // SERVICES
 Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
@@ -91,6 +87,7 @@ Route::get('/detail', [ServiceController::class, 'detail'])->name('services.deta
 Route::get('/services/edit/{service}', [ServiceController::class, 'edit'])->name('services.edit');
 Route::put('/update', [ServiceController::class, 'update'])->name('services.update');
 Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
+Route::get('services/export/', [ServiceController::class, 'export'])->name('export.excel');
 // PRESTATAIRES
 Route::get('/prestataires', [PrestataireController::class, 'list'])->name('prestataires.list');
 Route::get('/formulaire', [PrestataireController::class, 'formulaire'])->name('prestataires.formulaire');
@@ -104,6 +101,7 @@ Route::get('/vehicules', [VehiculeController::class, 'list'])->name('vehicules.l
 Route::get('vehicules/formulaire', [VehiculeController::class, 'formulaire'])->name('vehicules.formulaire');
 Route::post('/vehicules', [VehiculeController::class, 'store'])->name('vehicules.store');
 Route::post('/vehicules/vidange', [VehiculeController::class, 'vidange'])->name('vehicules.vidange');
+Route::get('vehicules/export/', [VehiculeController::class, 'export'])->name('export.excel');
 
 Route::get('vehicules/detail', [VehiculeController::class, 'detail'])->name('vehicules.detail');
 Route::get('vehicules/edit/{vehicule}', [VehiculeController::class, 'edit'])->name('vehicules.edit');

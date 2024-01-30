@@ -3,11 +3,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="page-wrapper">
         <div class="content">
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             <div class="page-header">
                 <div class="page-title">
                     <h4>Liste des Véhicules</h4>
@@ -36,22 +31,20 @@
                         </div>
                         <div class="wordset">
                             <ul>
-                                <li>
+                                {{-- <li>
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export PDF"
                                        href="{{ route('export.pdf') }}">
                                         <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                                     </a>
-                                </li>
+                                </li> --}}
                                  <li>
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export.excel') }}">
                                         <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                                     </a>
                                 </li>
                                 <li>
-                                    {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
-                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"
-                                       onclick="printList()" ; return false;">
-                                    <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
+                                    <a class="no-print" data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="window.print(); return false;">
+                                        <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
                                     </a>
                                 </li>
                             </ul>
@@ -110,11 +103,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <!-- Ajoutez des liens d'action pour chaque véhicule -->
-                                        {{-- <a class="me-3"
-                                           href="{{route('vehicules.detail', ['vehicule' => $vehicule->id_vehicule])}}">
-                                            <img src="{{asset('assets/img/icons/eye.svg')}}" alt="img">
-                                        </a> --}}
+                                       
                                         <a class="me-3"
                                            href="{{ route('vehicules.edit', ['vehicule' => $vehicule->id_vehicule]) }}">
                                             <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
@@ -202,4 +191,9 @@
         });
 
     </script>
+    <script>
+    function printList() {
+        window.print();
+    }
+</script>
 @endsection

@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\Models\Modele;
+use App\Models\affectation;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ModelesExport implements FromCollection
+class AffectationsExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Modele::all();
+        return affectation::all();
     }
 }

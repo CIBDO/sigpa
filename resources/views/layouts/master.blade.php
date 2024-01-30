@@ -27,9 +27,7 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
-    {{-- <link rel="stylesheet" href="{{asset('assets1/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets1/css/datatables.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets1/css/style.css')}}"> --}}
+   
 
     <style>
         .alert0n{
@@ -90,11 +88,6 @@
     <script src="{{asset('assets/plugins/apexchart/chart-data.js')}}"></script>
     <script src="{{asset('assets/js/script.js')}}"></script>
 
-    {{-- <script src="{{asset('assets/js/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/js/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/js/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/js/custom.js')}}"></script>
- --}}
 @yield('add-script')
 
 </body>

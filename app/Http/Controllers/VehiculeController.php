@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\VehiculesExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Vidange;
 use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
@@ -52,7 +53,7 @@ public function store(Request $request)
     ]);
 
     Vehicule::create($request->all());
-
+    Flash::info('success', 'Véhicule ajouté avec succès');
     return redirect()->route('vehicules.formulaire')
         ->with('success', 'Véhicule ajouté avec succès');
 }
@@ -95,7 +96,7 @@ public function store(Request $request)
 
          $vehicule->save();
 
-
+         Flash::info('success', 'Véhicule modifié avec succès');
         return redirect()->route('vehicules.list')
             ->with('success', 'Véhicule modifié avec succès');
     }
@@ -103,7 +104,7 @@ public function store(Request $request)
     public function destroy(Vehicule $vehicule)
     {
         $vehicule->delete();
-
+        Flash::info('success', 'Véhicule supprimé avec succès');
         return redirect()->route('vehicules.list')
             ->with('success', 'Véhicule supprimé avec succès');
     }
@@ -123,5 +124,9 @@ public function store(Request $request)
         }
         return redirect()->route('vehicules.list')->with('success', 'Vidange confirmée avec succès');
 
+    }
+    public function export() 
+    {
+        return Excel::download(new VehiculesExport, 'vehicules.xlsx');
     }
 }

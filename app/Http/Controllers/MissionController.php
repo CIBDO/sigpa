@@ -52,7 +52,7 @@ class MissionController extends Controller
         $mission->trajet = $request->trajet;
         $mission->id_vehicule = $request->id_vehicule;
         $mission->save();
-
+        Flash::info('success', 'Mission créée avec succès.');
         return redirect()->route('missions.list')->with('success', 'Mission créée avec succès.');
     }
 
@@ -85,7 +85,7 @@ class MissionController extends Controller
 
         $mission = Mission::findOrFail($id);
         $mission->update($validatedData);
-
+        Flash::info('success', 'Mission mise à jour avec succès.');
         return redirect()->route('missions.list')->with('success', 'Mission mise à jour avec succès.');
     }
 

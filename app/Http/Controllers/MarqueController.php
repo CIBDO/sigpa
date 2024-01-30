@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Marque;
 use HepplerDotNet\FlashToastr\Flash;
-use Brick\Math\BigInteger;
-use App\Exports\ExcelExportTrait;
 use App\Exports\MarquesExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -55,7 +53,7 @@ class MarqueController extends Controller
         // Utiliser la méthode fill pour définir explicitement le champ à mettre à jour
         $marque->fill(['nom_marque' => $request->input('nom_marque')]);
         $marque->save();
-    
+        Flash::info('success', 'Marque modifiée avec succès');
         return redirect()->route('marques.list')
             ->with('success', 'Marque modifiée avec succès');
     }
@@ -63,12 +61,12 @@ class MarqueController extends Controller
     public function destroy(Marque $marque)
     {
         $marque->delete();
-
+        Flash::info('success', 'Marque supprimée avec succès');
         return redirect()->route('marques.list')
             ->with('success', 'Marque supprimée avec succès');
     }
    
-        public function MarquesExport()
+        public function export()
         {
             return Excel::download(new MarquesExport, 'marques.xlsx');
         }

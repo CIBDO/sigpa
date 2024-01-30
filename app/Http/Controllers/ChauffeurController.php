@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Chauffeur;
 use App\Models\Service;
@@ -39,7 +39,7 @@ class ChauffeurController extends Controller
 
         // Créer un nouveau chauffeur
         Chauffeur::create($request->all());
-
+        Flash::info('success', 'Chauffeur ajouté avec succès');
         // Rediriger vers la liste des chauffeurs avec un message de succès
         return redirect()->route('chauffeurs.formulaire')->with('success', 'Chauffeur ajouté avec succès');
     }
@@ -78,7 +78,7 @@ class ChauffeurController extends Controller
         $services = Service::all();
         $chauffeur = Chauffeur::findOrFail($id_chauffeur);
         $chauffeur->update($request->all());
-
+        Flash::info('success', 'Chauffeur mis à jour avec succès');
         // Rediriger vers la liste des chauffeurs avec un message de succès
         return redirect()->route('chauffeurs.list')->with('success', 'Chauffeur mis à jour avec succès');
     }
@@ -88,7 +88,7 @@ class ChauffeurController extends Controller
         // Supprimer le chauffeur
         $chauffeur = Chauffeur::findOrFail($id_chauffeur);
         $chauffeur->delete();
-
+        Flash::info('success', 'Chauffeur supprimé avec succès');
         // Rediriger vers la liste des chauffeurs avec un message de succès
         return redirect()->route('chauffeurs.list')->with('success', 'Chauffeur supprimé avec succès');
     }

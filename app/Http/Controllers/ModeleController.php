@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Exports\GenericExport;
+use HepplerDotNet\FlashToastr\Flash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Modele;
 use Illuminate\Http\Request;
 use App\Exports\ModelesExport;
-use Barryvdh\DomPDF\Facade as PDF;
-use App\Exports\PdfExport;
 
 
 
@@ -34,7 +32,7 @@ class ModeleController extends Controller
         ]);
 
         Modele::create($request->all());
-
+        Flash::info('success', 'Modèle ajoutée avec succès');
         return redirect()->route('modeles.list')
             ->with('success', 'Modèle ajoutée avec succès');
     }
@@ -58,7 +56,7 @@ class ModeleController extends Controller
         // Utiliser la méthode fill pour définir explicitement le champ à mettre à jour
         $modele->fill(['nom_modele' => $request->input('nom_modele')]);
         $modele->save();
-    
+        Flash::info('success', 'Modele modifiée avec succès');
         return redirect()->route('modeles.list')
             ->with('success', 'Modele modifiée avec succès');
     }
@@ -66,23 +64,14 @@ class ModeleController extends Controller
     public function destroy(Modele $modele)
     {
         $modele->delete();
-
+        Flash::info('success', 'Modèle supprimée avec succès');
         return redirect()->route('modeles.list')
             ->with('success', 'Modèle supprimée avec succès');
     }
      
-    public function ModelesExport()
+    public function export()
     {
         return Excel::download(new ModelesExport, 'modeles.xlsx');
     }
-    /* public function exportPDF()
-    {
-        $data = Modele::all()->toArray();
-
-        // Utiliser DomPDF pour générer le PDF
-        $pdf = PDF::loadView('modeles_pdf', ['data' => $data]);
-
-        // Télécharger le PDF
-        return $pdf->download('export.pdf');
-    } */
+    
 }

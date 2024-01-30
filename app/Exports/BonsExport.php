@@ -2,18 +2,16 @@
 
 namespace App\Exports;
 
-use App\Models\Mission;
-use App\Models\Marque;
+use App\Models\Bon;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class RapportMissionsExport implements FromCollection
+class BonsExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Mission::all();
-        return Marque::all();
+        return Bon::all();
     }
 }

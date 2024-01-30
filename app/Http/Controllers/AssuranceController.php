@@ -3,7 +3,7 @@
 // AssuranceController.php
 
 namespace App\Http\Controllers;
-
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Assurance;
 use App\Models\Vehicule;
@@ -36,7 +36,7 @@ class AssuranceController extends Controller
         ]);
 
         Assurance::create($validatedData);
-
+        Flash::info('success', 'Assurance créée avec succès.');
         return redirect()->route('assurances.list')->with('success', 'Assurance créée avec succès.');
     }
 
@@ -64,14 +64,14 @@ class AssuranceController extends Controller
         ]);
 
         $assurance->update($validatedData);
-
+        Flash::info('success', 'Assurance mise à jour avec succès.');
         return redirect()->route('assurances.list')->with('success', 'Assurance mise à jour avec succès.');
     }
 
     public function destroy(Assurance $assurance)
     {
         $assurance->delete();
-
+        Flash::info('success', 'Assurance supprimée avec succès.');
         return redirect()->route('assurances.list')->with('success', 'Assurance supprimée avec succès.');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Prestataire;
 
@@ -28,7 +28,7 @@ class PrestataireController extends Controller
             ]);
     
             Prestataire::create($request->all());
-    
+            Flash::info('success', 'prestataire ajoutée avec succès');
             return redirect()->route('prestataires.list')
                 ->with('success', 'prestataire ajoutée avec succès');
         }
@@ -56,7 +56,7 @@ class PrestataireController extends Controller
             $prestataire->fill(['contact' => $request->input('contact')]);
             $prestataire->fill(['adresse' => $request->input('adresse')]);
             $prestataire->save();
-        
+            Flash::info('success', 'prestataire modifiée avec succès');
             return redirect()->route('prestataires.list')
                 ->with('success', 'prestataire modifiée avec succès');
         }
@@ -64,7 +64,7 @@ class PrestataireController extends Controller
         public function destroy(Prestataire $prestataire)
         {
             $prestataire->delete();
-    
+            Flash::info('success', 'prestataire supprimée avec succès');
             return redirect()->route('prestataires.list')
                 ->with('success', 'prestataire supprimée avec succès');
         }

@@ -2,7 +2,7 @@
 
  
 namespace App\Http\Controllers;
-
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Maintenance;
 use App\Models\Vehicule;
@@ -41,7 +41,7 @@ class MaintenanceController extends Controller
         ]);
 
         Maintenance::create($request->all());
-
+        Flash::info('success', 'Maintenance ajoutée avec succès');
         return redirect()->route('maintenances.formulaire')
                          ->with('success', 'Maintenance ajoutée avec succès');
     }
@@ -83,7 +83,7 @@ class MaintenanceController extends Controller
         $maintenance->fill(['travaux' => $request->input('travaux')]);
         $maintenance->fill(['statut' => $request->input('statut')]);
         $maintenance->save();
-        
+        Flash::info('success', 'Maintenance mise à jour avec succès');
         return redirect()->route('maintenances.list')
                          ->with('success', 'Maintenance mise à jour avec succès');
     }
@@ -91,7 +91,7 @@ class MaintenanceController extends Controller
     public function destroy(Maintenance $maintenance)
     {
         $maintenance->delete();
-
+        Flash::info('success', 'Maintenance supprimée avec succès');
         return redirect()->route('maintenances.list')
                          ->with('success', 'Maintenance supprimée avec succès');
     }

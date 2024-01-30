@@ -9,3 +9,16 @@
 .mauvais { background-color: #ff0000; color: #fff; }
 .actif { background-color: #00ff00; color: #000; }
 .inatif { background-color: #ff0000; color: #fff; }
+@media print {
+    /* Masquer les éléments avec la classe no-print lors de l'impression */
+    .no-print {
+        display: none;
+    }
+
+    /* Ajoutez d'autres styles d'impression si nécessaire */
+    body {
+        font-size: 12pt;
+        /* ... */
+    }
+}
+

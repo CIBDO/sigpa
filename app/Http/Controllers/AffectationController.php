@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use HepplerDotNet\FlashToastr\Flash;
     use App\Models\Affectation;
     use App\Models\Service;
     use App\Models\Modele;
@@ -55,7 +55,7 @@ class AffectationController extends Controller
             ]);
     
             Affectation::create($validatedData);
-    
+            Flash::info('success', 'Affectation créée avec succès.');
             return redirect()->route('affectations.list')->with('success', 'Affectation créée avec succès.');
         }
     
@@ -83,7 +83,7 @@ class AffectationController extends Controller
     
             $affectation = Affectation::find($id_affectation);
             $affectation->update($validatedData);
-    
+            Flash::info('success', 'Affectation mise à jour avec succès.');
             return redirect()->route('affectations.list')->with('success', 'Affectation mise à jour avec succès.');
         }
     
@@ -91,7 +91,7 @@ class AffectationController extends Controller
         {
             $affectation = Affectation::find($id_affectation);
             $affectation->delete();
-    
+            Flash::info('success', 'Affectation supprimée avec succès.');
             return redirect()->route('affectations.list')->with('success', 'Affectation supprimée avec succès.');
         }
     }

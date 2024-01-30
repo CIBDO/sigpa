@@ -4,11 +4,6 @@
 <div class="page-wrapper">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="content">
-    @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
         <div class="page-header">
             <div class="page-title">
                 <h4>Ajouter un Chauffeur</h4>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Http\Request;
 use App\Models\Bon;
 use App\Models\Vehicule;
@@ -44,7 +44,7 @@ class BonController extends Controller
         ]);
 
         Bon::create($request->all());
-
+        Flash::info('success', 'Bon créé avec succès');
         return redirect()->route('bons.list')
             ->with('success', 'Bon créé avec succès');
     }
@@ -70,7 +70,7 @@ class BonController extends Controller
 
         $bon = Bon::findOrFail($id_bon);
         $bon->update($request->all());
-
+        Flash::info('success', 'Bon mis à jour avec succès');
         return redirect()->route('bons.list')
             ->with('success', 'Bon mis à jour avec succès');
     }
@@ -80,7 +80,7 @@ class BonController extends Controller
     {
         $bon = Bon::findOrFail($id_bon);
         $bon->delete();
-
+        Flash::info('success', 'Bon supprimé avec succès');
         return redirect()->route('bons.list')
             ->with('success', 'Bon supprimé avec succès');
     }

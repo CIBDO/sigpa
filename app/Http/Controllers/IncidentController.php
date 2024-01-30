@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use HepplerDotNet\FlashToastr\Flash;
 use App\Models\IncidentFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -57,7 +58,7 @@ class IncidentController extends Controller
             $request->merge(['fichiers' => json_encode($fichiers)]);
         }
         $incident = Incident::create($request->all());
-
+        Flash::info('success', 'Incident créé avec succès');
         return redirect()->route('incidents.formulaire', $incident->id_incident)
             ->with('success', 'Incident créé avec succès');
     }
@@ -103,7 +104,7 @@ class IncidentController extends Controller
     }
 
     $incident->update($request->except('fichiers'));
-
+    Flash::info('success', 'Incident mis à jour avec succès');
     return redirect()->route('incidents.list', $incident->id_incident)
         ->with('success', 'Incident mis à jour avec succès');
 }
@@ -116,7 +117,7 @@ class IncidentController extends Controller
         }
 
         $incident->delete();
-
+        Flash::info('success', 'Incident supprimé avec succès');
         return redirect()->route('incidents.list')
             ->with('success', 'Incident supprimé avec succès');
     }

@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\Models\Modele;
+use App\Models\Chauffeur;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ModelesExport implements FromCollection
+class ChauffeursExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Modele::all();
+        return Chauffeur::all();
     }
 }
