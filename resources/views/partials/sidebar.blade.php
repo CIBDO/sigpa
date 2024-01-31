@@ -95,24 +95,7 @@
                                 <li><a href="createpurchasereturn.html">Add Purchase Return </a></li> --}}
                             </ul>
                         </li>
-                        <li class="submenu">
-                            <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/notification.svg')}}" alt="img"><span>Notifications</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="">Voir Notifications</a></li>
-                                {{-- <li><a href="">Détails Bon  </a></li> --}}
-                                {{-- <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
-                                <li><a href="createpurchasereturn.html">Add Purchase Return </a></li> --}}
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="javascript:void(0);"><img src="{{asset('assets/img/icons/users1.svg')}}" alt="img"><span>Statistques </span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                
-                                <li><a href="{{route('rapport.vehicules')}}">Voir Etats</a></li> 
-                                {{-- <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
-                                <li><a href="createpurchasereturn.html">Add Purchase Return </a></li> --}}
-                            </ul>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
