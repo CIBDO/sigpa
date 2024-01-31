@@ -2,20 +2,20 @@
 
 namespace App\Exports;
 
-use App\Models\Incident;
+use App\Models\Prestataire;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class IncidentsExport implements FromCollection
+class PrestatairesExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Incident::all();
+        return Prestataire::all();
     }
     public function downloadFileName()
     {
-        return 'incidents_export.xlsx'; // Spécifiez le nom de fichier souhaité
+        return 'prestataires_export.xlsx'; // Spécifiez le nom de fichier souhaité
     }
 }

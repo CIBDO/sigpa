@@ -14,4 +14,8 @@ class AssurancesExport implements FromCollection
     {
         return Assurance::all();
     }
+    public function downloadFileName()
+    {
+        return 'assurances_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

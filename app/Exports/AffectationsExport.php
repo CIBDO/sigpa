@@ -14,4 +14,8 @@ class AffectationsExport implements FromCollection
     {
         return affectation::all();
     }
+    public function downloadFileName()
+    {
+        return 'affectations_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

@@ -14,4 +14,9 @@ class ServicesExport implements FromCollection
     {
         return Service::all();
     }
+    public function downloadFileName()
+    {
+        return 'services_export.xlsx'; 
+    }
 }
+

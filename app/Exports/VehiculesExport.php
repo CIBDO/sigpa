@@ -14,4 +14,10 @@ class VehiculesExport implements FromCollection
     {
         return Vehicule::all();
     }
+  
+     
+    public function downloadFileName()
+    {
+        return 'vehicules_export.xlsx'; 
+    }
 }

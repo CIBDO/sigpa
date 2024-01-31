@@ -14,4 +14,8 @@ class ChauffeursExport implements FromCollection
     {
         return Chauffeur::all();
     }
+    public function downloadFileName()
+    {
+        return 'chauffeurs_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

@@ -14,4 +14,8 @@ class ModelesExport implements FromCollection
     {
         return Modele::all();
     }
+    public function downloadFileName()
+    {
+        return 'modeles_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

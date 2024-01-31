@@ -14,4 +14,8 @@ class MissionsExport implements FromCollection
     {
         return Mission::all();
     }
+    public function downloadFileName()
+    {
+        return 'missions_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

@@ -1,5 +1,13 @@
 <?php
 
+use App\Exports\MarquesExport;
+use App\Exports\AffectationsExport;
+use App\Exports\AssurancesExport;
+use App\Exports\MissionsExport;
+use App\Exports\ChauffeursExport;
+use App\Exports\BonsExport;
+use App\Exports\IncidentsExport;
+use App\Exports\MaintenancesExport;
 use App\helpers\MyNotifications;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +29,11 @@ use App\Http\Controllers\BonController;
 use App\Http\Controllers\RapportVehiculesController;
 use App\Http\Controllers\FiltreController;
 use App\Http\Controllers\RapportMaintenancesController;
+use App\Exports\VehiculesExport;
+use App\Exports\ServicesExport;
+use App\Exports\ModelesExport;
+use App\Exports\PrestatairesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 use App\Models\Affectation;
@@ -66,7 +79,9 @@ Route::put('/update{marque}', [MarqueController::class, 'update'])->name('marque
 // Supprimer une marque
 Route::delete('/marques/{marque}', [MarqueController::class, 'destroy'])->name('marques.destroy');
 // export
-Route::get('marques/export/', [MarqueController::class, 'export'])->name('export.excel');
+Route::get('/export-marques', function () {
+    return Excel::download(new MarquesExport, 'marques_export.xlsx');
+})->name('export-marques');
 
 
 // MODELES
@@ -77,7 +92,9 @@ Route::get('/detail', [ModeleController::class, 'detail'])->name('modeles.detail
 Route::get('/edit/{modele}', [ModeleController::class, 'edit'])->name('modeles.edit');
 Route::put('/update/{modele}', [ModeleController::class, 'update'])->name('modeles.update');
 Route::delete('/modeles/{modele}', [ModeleController::class, 'destroy'])->name('modeles.destroy');
-Route::get('modeles/export/', [ModeleController::class, 'export'])->name('export.excel');
+Route::get('/export-modeles', function () {
+    return Excel::download(new ModelesExport, 'modeles_export.xlsx');
+})->name('export-modeles');
 
 // SERVICES
 Route::get('/services', [ServiceController::class, 'list'])->name('services.list');
@@ -87,7 +104,9 @@ Route::get('/detail', [ServiceController::class, 'detail'])->name('services.deta
 Route::get('/services/edit/{service}', [ServiceController::class, 'edit'])->name('services.edit');
 Route::put('/update', [ServiceController::class, 'update'])->name('services.update');
 Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
-Route::get('services/export/', [ServiceController::class, 'export'])->name('export.excel');
+Route::get('/export-services', function () {
+    return Excel::download(new ServicesExport, 'services_export.xlsx');
+})->name('export-services');
 // PRESTATAIRES
 Route::get('/prestataires', [PrestataireController::class, 'list'])->name('prestataires.list');
 Route::get('/formulaire', [PrestataireController::class, 'formulaire'])->name('prestataires.formulaire');
@@ -96,12 +115,17 @@ Route::get('/detail', [PrestataireController::class, 'detail'])->name('prestatai
 Route::get('/prestataires/edit/{prestataire}', [PrestataireController::class, 'edit'])->name('prestataires.edit');
 Route::put('/prestataires/update/{prestataire}', [PrestataireController::class, 'update'])->name('prestataires.update');
 Route::delete('/prestataires/{prestataire}', [PrestataireController::class, 'destroy'])->name('prestataires.destroy');
+Route::get('/export-prestataires', function () {
+    return Excel::download(new PrestatairesExport, 'prestataires_export.xlsx');
+})->name('export-prestataires');
 //VEHICULES
 Route::get('/vehicules', [VehiculeController::class, 'list'])->name('vehicules.list');
 Route::get('vehicules/formulaire', [VehiculeController::class, 'formulaire'])->name('vehicules.formulaire');
 Route::post('/vehicules', [VehiculeController::class, 'store'])->name('vehicules.store');
 Route::post('/vehicules/vidange', [VehiculeController::class, 'vidange'])->name('vehicules.vidange');
-Route::get('vehicules/export/', [VehiculeController::class, 'export'])->name('export.excel');
+Route::get('/export-vehicules', function () {
+    return Excel::download(new VehiculesExport, 'vehicules_export.xlsx');
+})->name('export-vehicules');
 
 Route::get('vehicules/detail', [VehiculeController::class, 'detail'])->name('vehicules.detail');
 Route::get('vehicules/edit/{vehicule}', [VehiculeController::class, 'edit'])->name('vehicules.edit');
@@ -115,7 +139,9 @@ Route::get('/detail', [AffectationController::class, 'detail'])->name('affectati
 Route::get('/affectations/edit/{affectation}', [AffectationController::class, 'edit'])->name('affectations.edit');
 Route::put('affectations/update/{affectation}', [AffectationController::class, 'update'])->name('affectations.update');
 Route::delete('/affectations/{affectation}', [AffectationController::class, 'destroy'])->name('affectations.destroy');
-
+Route::get('/export-affectations', function () {
+    return Excel::download(new AffectationsExport, 'affectations_export.xlsx');
+})->name('export-affectations');
 //Chauffeurs
 Route::get('/chauffeurs', [ChauffeurController::class, 'list'])->name('chauffeurs.list');
 Route::get('chauffeurs/formulaire', [ChauffeurController::class, 'formulaire'])->name('chauffeurs.formulaire');
@@ -124,6 +150,9 @@ Route::get('chauffeurs/detail', [ChauffeurController::class, 'detail'])->name('c
 Route::get('chauffeurs/edit/{chauffeur}', [ChauffeurController::class, 'edit'])->name('chauffeurs.edit');
 Route::put('chauffeurs/update/{chauffeur}', [ChauffeurController::class, 'update'])->name('chauffeurs.update');
 Route::delete('/chauffeurs/{chauffeur}', [ChauffeurController::class, 'destroy'])->name('chauffeurs.destroy');
+Route::get('/export-chauffeurs', function () {
+    return Excel::download(new ChauffeursExport, 'chauffeurs_export.xlsx');
+})->name('export-chauffeurs');
 //MISSIONS
 Route::get('/missions', [MissionController::class, 'list'])->name('missions.list');
 Route::get('missions/formulaire', [MissionController::class, 'formulaire'])->name('missions.formulaire');
@@ -133,6 +162,9 @@ Route::get('missions/detail', [MissionController::class, 'detail'])->name('missi
 Route::get('missions/edit/{mission}', [MissionController::class, 'edit'])->name('missions.edit');
 Route::put('missions/update{mission}', [MissionController::class, 'update'])->name('missions.update');
 Route::delete('/missions/{mission}', [MissionController::class, 'destroy'])->name('missions.destroy');
+Route::get('/export-missions', function () {
+    return Excel::download(new MissionsExport, 'missions_export.xlsx');
+})->name('export-missions');
 //MAINTENANCES
 Route::get('/maintenances', [MaintenanceController::class, 'list'])->name('maintenances.list');
 Route::get('maintenances/formulaire', [MaintenanceController::class, 'formulaire'])->name('maintenances.formulaire');
@@ -141,6 +173,9 @@ Route::get('maintenances/detail', [MaintenanceController::class, 'detail'])->nam
 Route::get('maintenances/edit/{maintenance}', [MaintenanceController::class, 'edit'])->name('maintenances.edit');
 Route::put('maintenances/update/{maintenance}', [MaintenanceController::class, 'update'])->name('maintenances.update');
 Route::delete('/maintenances{maintenance}', [MaintenanceController::class, 'destroy'])->name('maintenances.destroy');
+Route::get('/export-maintenances', function () {
+    return Excel::download(new MissionsExport, 'maintenances_export.xlsx');
+})->name('export-maintenances');
 
 //CATEGORIE
 Route::get('/categories', [CategorieController::class, 'list'])->name('categories.list');
@@ -158,7 +193,9 @@ Route::get('assurances/detail', [AssuranceController::class, 'detail'])->name('a
 Route::get('assurances/edit/{assurance}', [AssuranceController::class, 'edit'])->name('assurances.edit');
 Route::put('assurances/update/{assurance}', [AssuranceController::class, 'update'])->name('assurances.update');
 Route::delete('/assurances{assurance}', [AssuranceController::class, 'destroy'])->name('assurances.destroy');
-
+Route::get('/export-assurances', function () {
+    return Excel::download(new AssurancesExport, 'assurances_export.xlsx');
+})->name('export-assurances');
 //Incidents
 Route::get('/incidents', [IncidentController::class, 'list'])->name('incidents.list');
 Route::get('incidents/formulaire', [IncidentController::class, 'formulaire'])->name('incidents.formulaire');
@@ -167,6 +204,9 @@ Route::get('/incidents/detail/{id_incident}', [IncidentController::class, 'detai
 Route::get('incidents/edit/{incident}', [IncidentController::class, 'edit'])->name('incidents.edit');
 Route::put('incidents/update/{incident}', [IncidentController::class, 'update'])->name('incidents.update');
 Route::delete('/incidents{incident}', [IncidentController::class, 'destroy'])->name('incidents.destroy');
+Route::get('/export-incidents', function () {
+    return Excel::download(new IncidentsExport, 'incidents_export.xlsx');
+})->name('export-incidents');
 //Incidents
 Route::get('/bons', [BonController::class, 'list'])->name('bons.list');
 Route::get('bons/formulaire', [BonController::class, 'formulaire'])->name('bons.formulaire');
@@ -175,6 +215,9 @@ Route::get('/bons/detail/{id_bon}', [BonController::class, 'detail'])->name('bon
 Route::get('bons/edit/{bon}', [BonController::class, 'edit'])->name('bons.edit');
 Route::put('bons/update/{bon}', [BonController::class, 'update'])->name('bons.update');
 Route::delete('/bons{bon}', [BonController::class, 'destroy'])->name('bons.destroy');
+Route::get('/export-bons', function () {
+    return Excel::download(new IncidentsExport, 'bons_export.xlsx');
+})->name('export-bons');
 
 Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRapport'])->name('rapport.vehicules');
 Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');

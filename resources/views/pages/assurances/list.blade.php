@@ -15,15 +15,15 @@
             </div>
             <div class="wordset">
                 <ul>
-                    <li>
+                    <{{-- li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export PDF"
                            href="{{ route('export.pdf') }}">
                             <img src="{{ asset('assets/img/icons/pdf.svg') }}" alt="PDF">
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel"
-                           href="{{ route('export.excel') }}">
+                           href="{{ route('export-assurances') }}">
                             <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
                         </a>
                     </li>

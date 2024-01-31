@@ -14,4 +14,8 @@ class MaintenancesExport implements FromCollection
     {
         return Maintenance::all();
     }
+    public function downloadFileName()
+    {
+        return 'maintenances_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

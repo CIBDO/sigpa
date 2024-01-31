@@ -14,4 +14,8 @@ class MarquesExport implements FromCollection
     {
         return Marque::all();
     }
+    public function downloadFileName()
+    {
+        return 'marques_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }

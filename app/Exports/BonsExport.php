@@ -14,4 +14,8 @@ class BonsExport implements FromCollection
     {
         return Bon::all();
     }
+    public function downloadFileName()
+    {
+        return 'bons_export.xlsx'; // Spécifiez le nom de fichier souhaité
+    }
 }
