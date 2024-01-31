@@ -98,8 +98,8 @@
                         </a>
                     </li> --}}
                      <li>
-                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Export Excel" href="{{ route('export-modeles') }}">
-                            <img src="{{ asset('assets/img/icons/excel.svg') }}" alt="Excel">
+                        <a class="no-print" data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="window.print(); return false;">
+                            <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
                         </a>
                     </li> 
                     <li>
@@ -166,4 +166,9 @@
         </div>
     </div>
 </div>
+<script>
+    function printList() {
+        window.print();
+    }
+</script>
 @endsection

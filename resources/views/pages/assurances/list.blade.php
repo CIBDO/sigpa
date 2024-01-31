@@ -29,9 +29,10 @@
                     </li>
                     <li>
                         {{-- <button class="btn btn-primary" id="printBtn">Imprimer</button> --}}
-                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="printList()">
-                        <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
+                        <a class="no-print" data-bs-toggle="tooltip" data-bs-placement="top" title="Print" onclick="window.print(); return false;">
+                            <img src="{{ asset('assets/img/icons/printer.svg') }}" alt="Print">
                         </a>
+
                     </li>
                 </ul>
             </div>
@@ -217,4 +218,10 @@
             });
         });
     </script>
+    <script>
+    function printList() {
+        window.print();
+    }
+</script>
+
 @endsection

@@ -19,8 +19,9 @@ class MissionController extends Controller
 //        dd(MyNotifications::sumNotifications());
 //        dd(MyNotifications::carToMaintain());
 //        dd(MyNotifications::getVehiclesNeedingOilChange()[0]);
-        Flash::success('Confirmation','Mission confirmée');
-        $missions = Mission::all(); // Remplacez cela par votre logique pour récupérer les missions
+        /* Flash::success('Confirmation','Mission confirmée'); */
+        /* $missions = Mission::all(); // Remplacez cela par votre logique pour récupérer les missions */
+        $missions = Mission::orderByDesc('date_debut')->get();
         $vehicules = Vehicule::all(); // Remplacez cela par votre logique pour récupérer les véhicules
 
     return view('pages.missions.list', ['missions' => $missions, 'véhicules' => $vehicules]);
