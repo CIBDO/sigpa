@@ -219,8 +219,6 @@ Route::get('/export-bons', function () {
     return Excel::download(new IncidentsExport, 'bons_export.xlsx');
 })->name('export-bons');
 
-Route::get('/rapport/vehicules', [RapportVehiculesController::class, 'afficherRapport'])->name('rapport.vehicules');
-Route::get('/rapport/maintenances', [RapportMaintenancesController::class, 'afficherRapport'])->name('rapport.maintenances');
 
 //les exportations
 
